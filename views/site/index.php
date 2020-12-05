@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <!-- //Meta tag Keywords -->
-    <title>Clack Website Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- //Meta tag Keywords -->
-    <!-- Custom-Files -->
-    <link rel="stylesheet" href="/template/css/bootstrap.css">
-    <!-- Bootstrap-Core-CSS -->
-    <!--/ Style-CSS -->
-    <link rel="stylesheet" href="/template/css/style.css" type="text/css" media="all">
-    <!--// Style-CSS -->
-    <!-- font-awesome-icons -->
-    <link href="/template/css/font-awesome.css" rel="stylesheet">
-    <!-- //font-awesome-icons -->
-  <!-- /Fonts -->
-    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
 <!-- Heeader -->
 <?php include ROOT.'/views/include/header.php'; ?>
 
@@ -38,7 +19,7 @@
                     <div class="side-bar col-lg-3">
 
                         <div class="search-bar w3layouts-newsletter">
-                            <h3 class="sear-head editContent" >Поиск фильма</h3>
+                            <h3 class="sear-head editContent">Поиск фильма</h3>
                             <form action="#" method="post" class="d-flex editContent" >
                                 <input type="search" placeholder="Введите название..." name="search" class="form-control" required="">
                                 <button class="btn1 btn" ><span class="fa fa-search" aria-hidden="true" ></span></button>
@@ -167,14 +148,14 @@
                     <div class="left-ads-display col-lg-9">
                         <div class="row">
                             <?php foreach ($latestProducts as $product): ?>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="product-shoe-info editContent text-center mt-lg-4" >
                                     <div class="men-thumb-item">
-                                        <img src="template/images/s5.jpg"  class="img-fluid" alt="" >
+                                        <img src="template/images/<?php echo $product['image'];?>"  class="img-fluid" alt="" >
                                     </div>
                                     <div class="item-info-product">
                                         <h4>
-                                            <a href="moviesingle.html" class="editContent" ><?php echo $product['name'];?></a>
+                                            <a href="product/<?php echo $product['id'];?>" class="editContent" ><?php echo $product['name'];?></a>
                                         </h4>
 
                                         <div class="product_price">
@@ -193,10 +174,20 @@
                                 </div>
                             </div>
                             <?php endforeach;?>
+
                     </div>
+
                 </div>
+
             </div>
+
+            
+                    <nav aria-label="Page navigation example">
+                    <?php echo $pagination->get(); ?>
+                    </nav>
+
         </section>
+
 
 <!-- Footer -->
 <?php include ROOT.'/views/include/footer.php'; ?>

@@ -4720,6 +4720,7 @@ tbody.collapse.show {
 }
 
 .pagination {
+	
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

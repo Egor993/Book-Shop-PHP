@@ -14,7 +14,10 @@ class ProductController {
 
 	public function actionView($id) {
 
-	require_once(ROOT . '/views/product/index.php');
+		$viewproduct = array();
+        $viewproduct = Product::getProductById($id);
+        
+		require_once(ROOT . '/views/product/index.php');
 
 
 		return true;

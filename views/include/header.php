@@ -31,19 +31,16 @@
                         <label for="drop" class="toggle">Menu</label>
                         <input type="checkbox" id="drop">
                         <ul class="menu mt-2">
-                            <li class="active"><a href="#">Главная</a></li>
-                            <li>
-
-                                <label for="drop-2" class="toggle">Категории <span class="fa fa-angle-down" aria-hidden="true" ></span> </label>
-                                <a href="#">Категории <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-2">
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Вход</a></li>
+                            <li class="active"><a href="/">Главная</a></li>
+                            <li><a href="#">О магазине</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <?php if (!isset($_SESSION['user'])): ?>
+                            <li><a href="/register">Регистрация</a></li>
+                            <li><a href="/login">Вход</a></li>
+                            <?php else: ?>
+                            <li>(<?php echo $_SESSION['user']?>)<a href="/exit">Выход</a></li>
+                            <li><a href="#">Личный кабинет</a></li>
+                            <?php endif; ?>
                             <li><a href="#">Корзина</a></li>
                         </ul>
                     </nav>
