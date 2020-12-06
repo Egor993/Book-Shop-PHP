@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>BookShop</title>
+    <title>Book Shop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,20 +18,20 @@
 <body>
 <!-- mian-content -->
     <div id="page" class="page">
-        <div class="main-banner bg bg1" id="home" style="background-color: rgba(0, 0, 0, 0); margin-top: 0px; background-image: url(&quot;template/single-post-pic.jpg&quot;);">
+        <div class="main-banner bg bg1" id="home" >
             <!-- header -->
             <header class="header">
                 <div class="container-fluid px-lg-5">
                     <!-- nav -->
                     <nav class="py-4">
                         <div id="logo">
-                            <h1> <a href="index.html" class="editContent" style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(255, 255, 255); font-size: 40px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Source Sans Pro&quot;, sans-serif;">BookShop</a></h1>
+                            <h1> <a href="index.html" class="editContent" style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(255, 255, 255); font-size: 40px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Source Sans Pro&quot;, sans-serif;">Book Shop</a></h1>
                         </div>
 
                         <label for="drop" class="toggle">Menu</label>
                         <input type="checkbox" id="drop">
                         <ul class="menu mt-2">
-                            <li class="active"><a href="/">Главная</a></li>
+                            <li><a href="/">Главная</a></li>
                             <li><a href="#">О магазине</a></li>
                             <li><a href="#">Контакты</a></li>
                             <?php if (!isset($_SESSION['user'])): ?>
@@ -39,9 +39,10 @@
                             <li><a href="/login">Вход</a></li>
                             <?php else: ?>
                             <li>(<?php echo $_SESSION['user']?>)<a href="/exit">Выход</a></li>
-                            <li><a href="#">Личный кабинет</a></li>
+                            <li><a href="/profile">Личный кабинет</a></li>
                             <?php endif; ?>
-                            <li><a href="#">Корзина</a></li>
+                            <li><a href="/cart">Корзина</a></li>
+                            <span id='cart-count'><?php echo Cart::countItems(); ?></span>
                         </ul>
                     </nav>
                     <!-- /nav -->

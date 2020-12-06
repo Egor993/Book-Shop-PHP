@@ -4,7 +4,6 @@
 
 
 
-
 <!-- Footer -->
 <?php include ROOT.'/views/include/footer.php'; ?>
 

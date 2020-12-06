@@ -12,7 +12,7 @@ class UserController {
         if (isset($_POST['submit'])) {
             $name = $_POST['username'];
             $email = $_POST['email'];
-            $password1 = $_POST['password1'];
+            $password = $_POST['password1'];
             $password2 = $_POST['password2'];
 
             $errors = false;
@@ -25,8 +25,12 @@ class UserController {
                 $errors[] = 'Неправильный email';
             }
             
-            if (!User::checkPassword($password1)) {
+            if (!User::checkPassword($password)) {
                 $errors[] = 'Пароль не должен быть короче 6-ти символов';
+            }
+
+            if ($password != $password2) {
+                $errors[] = 'Пароли не совпадают';
             }
 
             if (User::checkNameExists($name)) {
@@ -38,7 +42,7 @@ class UserController {
             }
             
             if ($errors == false) {
-                $result = User::register($name, $email, $password1);
+                $result = User::register($name, $email, $password);
                 User::auth($name);
             }
 
@@ -91,14 +95,6 @@ class UserController {
         unset($_SESSION['user']);
 
         header("Location: /login"); 
-
-        return true;
-    }
-
-    public function actionProfile()
-    {
-
-        require_once(ROOT . '/views/user/profile.php');
 
         return true;
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 05 2020 г., 12:42
+-- Время создания: Дек 06 2020 г., 20:00
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -94,7 +94,7 @@ CREATE TABLE `product_order` (
   `user_phone` varchar(255) NOT NULL,
   `user_comment` text NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
   `products` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -104,8 +104,9 @@ CREATE TABLE `product_order` (
 --
 
 INSERT INTO `product_order` (`id`, `user_name`, `user_phone`, `user_comment`, `user_id`, `date`, `products`, `status`) VALUES
-(45, 'fsdfsd', '1', '123123123', 4, '2015-05-14 09:54:45', '{\"1\":1,\"2\":1,\"3\":2}', 3),
-(46, 'САША1', 'g3424242342', '', 4, '2015-05-18 15:34:42', '{\"44\":3,\"43\":3}', 1);
+(45, 'fsdfsd', '1', '123123123', 4, '2015-05-14 12:54:45', '{\"1\":1,\"2\":1,\"3\":2}', 3),
+(46, 'САША1', 'g3424242342', '', 4, '2015-05-18 18:34:42', '{\"44\":3,\"43\":3}', 1),
+(52, 'egor8765', '79204516092', '1', 6, '2020-12-06 19:55:10', '{\"37\":3,\"36\":3}', 1);
 
 -- --------------------------------------------------------
 
@@ -117,18 +118,18 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
-(3, 'Александр', 'alex@mail.com', '111111', ''),
-(4, 'Виктор Зинченко', 'zinchenko.us@gmail.com', '222222', 'admin'),
-(5, 'Сергей', 'serg@mail.com', '111111', '');
+INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
+(3, 'Александр', 'alex@mail.com', '111111'),
+(4, 'Виктор Зинченко', 'zinchenko.us@gmail.com', '222222'),
+(5, 'Сергей', 'serg@mail.com', '111111'),
+(6, 'egor8765', 'egor8765@mail.ru', '123456');
 
 --
 -- Индексы сохранённых таблиц
@@ -178,13 +179,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT для таблицы `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

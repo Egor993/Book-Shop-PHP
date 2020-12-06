@@ -157,7 +157,7 @@
                                         <h4>
                                             <a href="product/<?php echo $product['id'];?>" class="editContent" ><?php echo $product['name'];?></a>
                                         </h4>
-
+                                        <a class='add-to-cart'href="#" data-id='<?php echo $product['id']; ?>'>В корзину</a>
                                         <div class="product_price">
                                             <div class="grid-price">
                                                 <span class="money editContent" >«Слогана нет»</span>

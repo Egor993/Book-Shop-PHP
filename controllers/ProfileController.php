@@ -4,38 +4,55 @@
 // include_once ROOT . '/models/Product.php';
 // include_once ROOT . '/components/Pagination.php';
 
-class SiteController {
+class ProfileController {
 
-	public function actionIndex($page = 1) {
+	public function actionIndex() {
 
-        $genres = array();
-        $genres = Genres::getGenresList();
+        $name = $_SESSION['user'];
 
-        $latestProducts = array();
-        $latestProducts = Product::getLatestProducts($page);
+        $data = User::getUserData($name);
 
-        $total = Product::getTotalProducts();
+        require_once(ROOT . '/views/profile/index.php');
 
-        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+        return true;
+    }
 
-		require_once(ROOT . '/views/site/index.php');
+    public function actionEdit() {
+        // Получаем идентификатор пользователя из сессии
+        $name = $_SESSION['user'];;
+        
+        $data = User::getUserData($name);
+                
+        $result = false;     
 
-		return true;
-	}
+        if (isset($_POST['submit'])) {
+            $password = $_POST['password1'];
+            $password2 = $_POST['password2'];
+            
+            $errors = false;
+            
+            if (!User::checkPassword($password)) {
+                $errors[] = 'Пароль не должен быть короче 6-ти символов';
+            }
 
-// 	public function actionView($id)
-// 	{
-// 		if ($id) {
-// 			$newsItem = News::getNewsItemByID($id);
+            if ($password == $data['password']) {
+                $errors[] = 'Старый пароль введен неверно';
+            }
 
-// 	require_once(ROOT . '/views/site/view.php');
+            if ($password != $password2) {
+                $errors[] = 'Пароли не совпадают';
+            }
+            
+            if ($errors == false) {
+                $result = User::edit($name, $password);
+            }
 
-// /*			echo 'actionView'; */
-// 		}
+        }
 
-// 		return true;
+        require_once(ROOT . '/views/profile/edit.php');
 
-	// }
+        return true;
+    }
 
 }
 

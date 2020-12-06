@@ -35,6 +35,41 @@ class User {
         return false;
     }
 
+    public static function getUserData($name) {
+
+        $db = Db::getConnection();
+
+        $sql = 'SELECT * FROM user WHERE name = :name';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $name, PDO::PARAM_INT);
+        $result->execute();
+
+        $user = $result->fetch();
+        if ($user) {
+
+            $arr = ['id' => $user['id'], 'name' => $user['name'], 'email' => $user['email'], 'password' => $user['password']];
+
+            return $arr;
+        }
+
+        return false;
+    }
+    
+    public static function edit($name, $password) {
+        
+        $db = Db::getConnection();
+        
+        $sql = "UPDATE user 
+            SET password = :password 
+            WHERE name = :name";
+        
+        $result = $db->prepare($sql);                                         
+        $result->bindParam(':name', $name, PDO::PARAM_STR);    
+        $result->bindParam(':password', $password, PDO::PARAM_STR); 
+        return $result->execute();
+    }
+
     // public static function checkLogged() {
     //     // Если сессия есть, вернем идентификатор пользователя
     //     if (isset($_SESSION['user'])) {
@@ -48,6 +83,36 @@ class User {
     {
         $_SESSION['user'] = $name;
 
+    }
+
+    public static function checkLogged()
+    {
+        // Если сессия есть, вернем идентификатор пользователя
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user'];
+        }
+
+        header("Location: /user/login");
+    }
+
+    public static function checkPhone($phone)
+    {
+        if (strlen($phone) >= 10) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Проверяет является ли пользователь гостем
+     * @return boolean <p>Результат выполнения метода</p>
+     */
+    public static function isGuest()
+    {
+        if (isset($_SESSION['user'])) {
+            return false;
+        }
+        return true;
     }
     
     /**
