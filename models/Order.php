@@ -32,7 +32,6 @@ class Order
         $result->bindParam(':user_comment', $userComment, PDO::PARAM_STR);
         $result->bindParam(':user_id', $userId, PDO::PARAM_STR);
         $result->bindParam(':products', $products, PDO::PARAM_STR);
-
         return $result->execute();
     }
 
@@ -46,7 +45,7 @@ class Order
         $db = Db::getConnection();
 
         // Получение и возврат результатов
-        $result = $db->query('SELECT id, user_name, user_phone, date, status FROM product_order ORDER BY id DESC');
+        $result = $db->query('SELECT id, user_name, user_phone, date, status, products FROM product_order ORDER BY id DESC');
         $ordersList = array();
         $i = 0;
         while ($row = $result->fetch()) {
@@ -55,6 +54,7 @@ class Order
             $ordersList[$i]['user_phone'] = $row['user_phone'];
             $ordersList[$i]['date'] = $row['date'];
             $ordersList[$i]['status'] = $row['status'];
+            $ordersList[$i]['products'] = $row['products'];
             $i++;
         }
         return $ordersList;

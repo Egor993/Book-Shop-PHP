@@ -151,7 +151,7 @@
                             <div class="col-md-3">
                                 <div class="product-shoe-info editContent text-center mt-lg-4" >
                                     <div class="men-thumb-item">
-                                        <img src="template/images/<?php echo $product['image'];?>"  class="img-fluid" alt="" >
+                                        <img src="template/images/<?php echo $product['image'];?>"  class="img-fluid">
                                     </div>
                                     <div class="item-info-product">
                                         <h4>

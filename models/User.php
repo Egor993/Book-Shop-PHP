@@ -2,17 +2,18 @@
 
 class User {
 
-    public static function register($name, $email, $password) {
+    public static function register($name, $email, $password, $role) {
         
         $db = Db::getConnection();
          
-        $sql = 'INSERT INTO user (name, email, password) '
-                . 'VALUES (:name, :email, :password)';
+        $sql = 'INSERT INTO user (name, email, password, role) '
+                . 'VALUES (:name, :email, :password, :role)';
         
         $result = $db->prepare($sql);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->bindParam(':password', $password, PDO::PARAM_STR);
+        $result->bindParam(':role', $role, PDO::PARAM_STR);
         return $result->execute();
     }
 
@@ -35,6 +36,8 @@ class User {
         return false;
     }
 
+    
+
     public static function getUserData($name) {
 
         $db = Db::getConnection();
@@ -48,7 +51,7 @@ class User {
         $user = $result->fetch();
         if ($user) {
 
-            $arr = ['id' => $user['id'], 'name' => $user['name'], 'email' => $user['email'], 'password' => $user['password']];
+            $arr = ['id' => $user['id'], 'name' => $user['name'], 'email' => $user['email'], 'password' => $user['password'], 'role' => $user['role']];
 
             return $arr;
         }

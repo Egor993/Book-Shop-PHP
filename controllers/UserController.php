@@ -14,6 +14,7 @@ class UserController {
             $email = $_POST['email'];
             $password = $_POST['password1'];
             $password2 = $_POST['password2'];
+            $role = 'user';
 
             $errors = false;
             
@@ -42,7 +43,7 @@ class UserController {
             }
             
             if ($errors == false) {
-                $result = User::register($name, $email, $password);
+                $result = User::register($name, $email, $password, $role);
                 User::auth($name);
             }
 

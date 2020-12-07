@@ -16,8 +16,7 @@ class Product
         $db = Db::getConnection();
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, image, is_new FROM product '
-                . 'WHERE status = "1"'
+        $result = $db->query('SELECT id, name, price, image FROM product '
                 . 'ORDER BY id ASC '                
                 . 'LIMIT ' . self::SHOW_BY_DEFAULT
                 . ' OFFSET ' . $offset); // 
@@ -28,7 +27,6 @@ class Product
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['image'] = $row['image'];
             $productsList[$i]['price'] = $row['price'];
-            $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
         }
 
@@ -39,8 +37,7 @@ class Product
     	
         $db = Db::getConnection();
 
-        $result = $db->query('SELECT count(id) AS count FROM product '
-                . 'WHERE status="1"');
+        $result = $db->query('SELECT count(id) AS count FROM product ');
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $row = $result->fetch();
 
@@ -61,7 +58,7 @@ class Product
         }
     }
 
-        public static function getProdustsByIds($idsArray) {
+    public static function getProdustsByIds($idsArray) {
 
         $products = array();
         
@@ -72,7 +69,7 @@ class Product
 
         $idsString = implode(',', $idsArray);
 
-        $sql = "SELECT * FROM product WHERE status='1' AND id IN ($idsString)";
+        $sql = "SELECT * FROM product WHERE id IN ($idsString)";
 
         $result = $db->query($sql);        
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -88,50 +85,102 @@ class Product
 
         return $products;
     }
+
+    public static function getProductsList()
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT id, name, price, image, author FROM product ORDER BY id ASC');
+        $productsList = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['price'] = $row['price'];
+            $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['author'] = $row['author'];
+            $i++;
+        }
+        return $productsList;
+    }
+
+        public static function updateProductById($id, $options)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Текст запроса к БД
+        $sql = "UPDATE product
+            SET 
+                name = :name,
+                image = :image, 
+                price = :price, 
+                author = :author, 
+                description = :description 
+            WHERE id = :id";
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':image', $options['image'], PDO::PARAM_STR);
+        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+        $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+
+        return $result->execute();
+
+    }
+
+    public static function createProduct($options)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Текст запроса к БД
+        $sql = 'INSERT INTO product '
+                . '(name, price, author,'
+                . 'description, image)'
+                . 'VALUES '
+                . '(:name, :price, :author,'
+                . ':description, :image)';
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':image', $options['image'], PDO::PARAM_STR);
+        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+        $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+        if ($result->execute()) {
+            // Если запрос выполенен успешно, возвращаем id добавленной записи
+            return $db->lastInsertId();
+        }
+        // Иначе возвращаем 0
+        return 0;
+    }
+
+        public static function deleteProductById($ids) {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'DELETE FROM product WHERE id = :id';
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        foreach($ids as $id) {
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->execute();
+        }
+        return true;
+    }
 }
 
 
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//     /**
-//      * Returns an array of recommended products
-//      */
-//     public static function getRecommendedProducts()
-//     {
-//         $db = Db::getConnection();
-
-//         $productsList = array();
-
-//         $result = $db->query('SELECT id, name, price, image, is_new FROM product '
-//                 . 'WHERE status = "1" AND is_recommended = "1"'
-//                 . 'ORDER BY id DESC ');
-
-//         $i = 0;
-//         while ($row = $result->fetch()) {
-//             $productsList[$i]['id'] = $row['id'];
-//             $productsList[$i]['name'] = $row['name'];
-//             $productsList[$i]['image'] = $row['image'];
-//             $productsList[$i]['price'] = $row['price'];
-//             $productsList[$i]['is_new'] = $row['is_new'];
-//             $i++;
-//         }
-
-//         return $productsList;
-//     }
-
-// 
