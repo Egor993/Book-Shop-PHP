@@ -26,17 +26,26 @@
                             </form>
                         </div>
                         <!--preference -->
-                        <div class="left-side my-4">
-                            <h3 class="sear-head editContent" >Жанры</h3>
-                            <ul class="w3layouts-box-list">
-                                <?php foreach ($genres as $item): ?>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" ><?php echo $item['name'];?></span>
-                                </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
+                            <form action="#" method="post">
+                            <div class="left-side my-4">
+                                <h3 class="sear-head editContent">Жанры</h3>
+                                <ul class="w3layouts-box-list">
+                                    
+                                        <li class="editContent">
+                                            <input type="checkbox" class="checked" name="genre[]" value="'Биография'">
+                                            <span class="span editContent">Биография</span>
+                                        </li>
+                                    
+                                        <li class="editContent">
+                                            <input type="checkbox" class="checked" name="genre[]" value="'Драма'">
+                                            <span class="span editContent">Драма</span>
+                                        </li>
+                                    
+                                </ul>
+                                <button type="sumbit">Найти</button>
+                            </div>
+                            
+                            </form>
                         <!-- // preference -->
                         <!-- discounts -->
                         <div class="left-side">
@@ -131,7 +140,7 @@
                             <h3 class="sear-head editContent">Последние добавленные</h3>
                             <div class="special-sec1 row mt-3 editContent">
                                 <div class="img-deals col-md-4">
-                                    <img src="template/images/s5.jpg" class="img-fluid" alt="">
+                                    <img src="/template/images/s5.jpg" class="img-fluid" alt="">
                                 </div>
                                 <div class="img-deal1 col-md-4">
                                     <h3 class="editContent">Крестный отец</h3>
@@ -151,7 +160,7 @@
                             <div class="col-md-3">
                                 <div class="product-shoe-info editContent text-center mt-lg-4" >
                                     <div class="men-thumb-item">
-                                        <img src="template/images/<?php echo $product['image'];?>"  class="img-fluid">
+                                        <img src="/template/images/<?php echo $product['image'];?>"  class="img-fluid">
                                     </div>
                                     <div class="item-info-product">
                                         <h4>

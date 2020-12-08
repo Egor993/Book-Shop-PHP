@@ -33,6 +33,86 @@ class Product
         return $productsList;
     }
 
+    public static function getProductsByWord($page, $word)
+    {
+        $page = intval($page);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
+        $db = Db::getConnection();
+
+        // echo $word;
+
+        $productsList = array();
+
+        $result = $db->query('SELECT id, name, price, image FROM product WHERE name LIKE'.'"%'.$word.'%"'
+                . ' ORDER BY id ASC '                
+                . 'LIMIT ' . self::SHOW_BY_DEFAULT
+                . ' OFFSET ' . $offset); // 
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['price'] = $row['price'];
+            $i++;
+        }
+
+        return $productsList;
+    }
+
+    public static function getProductsByGenre($page, $genre)
+    {
+        $page = intval($page);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
+        $db = Db::getConnection();
+
+        $productsList = array();
+
+        foreach ($genre as $val) {      
+            $result = $db->query('SELECT id, name, price, image FROM product WHERE genre=' . $val
+                    . ' ORDER BY id ASC '                
+                    . 'LIMIT ' . self::SHOW_BY_DEFAULT
+                    . ' OFFSET ' . $offset); // 
+
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $productsList[$i]['id'] = $row['id'];
+                $productsList[$i]['name'] = $row['name'];
+                $productsList[$i]['image'] = $row['image'];
+                $productsList[$i]['price'] = $row['price'];
+                $i++;
+            }
+        }
+
+        return $productsList;
+    }
+
+    public static function getTotalProductsByWord($word) {
+    
+    $db = Db::getConnection();
+
+    $result = $db->query('SELECT count(id) AS count FROM product WHERE name LIKE'.'"%'.$word.'%"');
+    $result->setFetchMode(PDO::FETCH_ASSOC);
+    $row = $result->fetch();
+
+    return $row['count'];
+    }
+
+    public static function getTotalProductsByGenre($genre) {
+    
+    $db = Db::getConnection();
+
+    foreach ($genre as $val) {   
+        $result = $db->query('SELECT count(id) AS count FROM product WHERE genre=' . $val);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+    }
+    return $row['count'];
+    }
+
+
     public static function getTotalProducts() {
     	
         $db = Db::getConnection();
@@ -137,17 +217,18 @@ class Product
 
     public static function createProduct($options)
     {
+
+        $options['genre'] = 'Биография'; // УДАЛИТЬ
         // Соединение с БД
         $db = Db::getConnection();
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Текст запроса к БД
         $sql = 'INSERT INTO product '
                 . '(name, price, author,'
-                . 'description, image)'
+                . 'description, image, genre)'
                 . 'VALUES '
                 . '(:name, :price, :author,'
-                . ':description, :image)';
+                . ':description, :image, :genre)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -156,6 +237,7 @@ class Product
         $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
         $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+        $result->bindParam(':genre', $options['genre'], PDO::PARAM_STR);
         if ($result->execute()) {
             // Если запрос выполенен успешно, возвращаем id добавленной записи
             return $db->lastInsertId();

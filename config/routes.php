@@ -16,6 +16,16 @@ return array(
     // 'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
     // 
 	'product/([0-9]+)' => 'product/view/$1',
+
+	// 'filter\?genre\=([^\s]+)' => 'site/index',
+
+
+
+	'page-([0-9]+)/filter\?([^\s]+)' => 'site/index/$1/$2',
+
+	'page-([0-9]+)\?search\=([^\s]+)/page-([0-9]+)' => 'site/index/$1/$2/$3',
+	'page-([0-9]+)\?search\=([^\s]+)' => 'site/index/$1/$2',
+
 	'page-([0-9]+)' => 'site/index/$1',
 
 	'register' => 'user/register',
@@ -31,7 +41,7 @@ return array(
 
 	'payment' => 'cart/payment',
 
-	'exit' => 'user/exit',
+	'exit' => 'user/exit', 
 	'' => 'site/index', 
 
 	

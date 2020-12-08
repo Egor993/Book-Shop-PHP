@@ -1,41 +1,54 @@
 <?php
 
-// include_once ROOT . '/models/Genres.php';
-// include_once ROOT . '/models/Product.php';
-// include_once ROOT . '/components/Pagination.php';
-
 class SiteController {
 
-	public function actionIndex($page = 1) {
+	public function actionIndex($page = null) {
 
-        $genres = array();
-        $genres = Genres::getGenresList();
-
-        $latestProducts = array();
-        $latestProducts = Product::getLatestProducts($page);
-
-        $total = Product::getTotalProducts();
-
-        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
-
-		require_once(ROOT . '/views/site/index.php');
-
-		return true;
+	if ($page == null) {
+		$page = 1;
+		unset($_SESSION['search']);
+		unset($_SESSION['genre']);
 	}
 
-// 	public function actionView($id)
-// 	{
-// 		if ($id) {
-// 			$newsItem = News::getNewsItemByID($id);
+	if (isset($_POST['search'])) {
 
-// 	require_once(ROOT . '/views/site/view.php');
+		$_SESSION['search'] = $_POST['search'];
+	}
 
-// /*			echo 'actionView'; */
-// 		}
+	if (isset($_POST['genre'])) {
 
-// 		return true;
+		$_SESSION['genre'] = $_POST['genre'];
+		unset($_SESSION['search']);
+	}
 
-	// }
+	echo isset($_SESSION['search']);
+
+	$latestProducts = array();
+	
+	if (isset($_SESSION['search'])) {
+
+		$latestProducts = Product::getProductsByWord($page, $_SESSION['search']);
+		$total = Product::getTotalProductsByWord($_SESSION['search']);
+	}
+
+	else if (isset($_SESSION['genre'])) {
+
+		$latestProducts = Product::getProductsByGenre($page, $_SESSION['genre']);
+		$total = Product::getTotalProductsByGenre($_SESSION['genre']);
+	}
+
+	else {
+
+		$latestProducts = Product::getLatestProducts($page);
+		$total = Product::getTotalProducts();
+	}
+	
+	$pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+
+	require_once(ROOT . '/views/site/index.php');
+
+	return true;
+	}
 
 }
 
