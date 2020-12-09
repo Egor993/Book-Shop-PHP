@@ -5,9 +5,9 @@ class SiteController {
 	public function actionIndex($page = null) {
 
 	if ($page == null) {
-		$page = 1;
 		unset($_SESSION['search']);
 		unset($_SESSION['genre']);
+		$page = 1;
 	}
 
 	if (isset($_POST['search'])) {
@@ -20,8 +20,6 @@ class SiteController {
 		$_SESSION['genre'] = $_POST['genre'];
 		unset($_SESSION['search']);
 	}
-
-	echo isset($_SESSION['search']);
 
 	$latestProducts = array();
 	
@@ -48,6 +46,7 @@ class SiteController {
 	require_once(ROOT . '/views/site/index.php');
 
 	return true;
+
 	}
 
 }

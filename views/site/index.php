@@ -19,7 +19,7 @@
                     <div class="side-bar col-lg-3">
 
                         <div class="search-bar w3layouts-newsletter">
-                            <h3 class="sear-head editContent">Поиск фильма</h3>
+                            <h3 class="sear-head editContent">Поиск книги</h3>
                             <form action="#" method="post" class="d-flex editContent" >
                                 <input type="search" placeholder="Введите название..." name="search" class="form-control" required="">
                                 <button class="btn1 btn" ><span class="fa fa-search" aria-hidden="true" ></span></button>
@@ -32,108 +32,101 @@
                                 <ul class="w3layouts-box-list">
                                     
                                         <li class="editContent">
-                                            <input type="checkbox" class="checked" name="genre[]" value="'Биография'">
-                                            <span class="span editContent">Биография</span>
+                                             <button type="sumbit" class="btn genre">Биография</button>
+                                            </button>
                                         </li>
                                     
                                         <li class="editContent">
-                                            <input type="checkbox" class="checked" name="genre[]" value="'Драма'">
-                                            <span class="span editContent">Драма</span>
+                                             <button type="sumbit" class="btn genre">Драма</button>
+                                            </button>
                                         </li>
                                     
                                 </ul>
-                                <button type="sumbit">Найти</button>
                             </div>
                             
                             </form>
                         <!-- // preference -->
-                        <!-- discounts -->
-                        <div class="left-side">
-                            <h3 class="sear-head editContent" >Год</h3>
-                            <ul class="w3layouts-box-list">
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >2020</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >2019</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >2018</span>
-                                </li>
-                                <li>
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >2017</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >2016</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >2015</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- //discounts -->
+
                         <!-- reviews -->
+                        <form action="#" method="post">
                         <div class="customer-rev left-side my-4">
                             <h3 class="sear-head editContent" >Рейтинг</h3>
                             <ul class="w3layouts-box-list">
                                 <li>
-                                    <a href="#">
+                                    <button type="sumbit" name ='star' value ='5' class="rating">
+                                        <a href="#">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
-                                        <span class="editContent" >5.0</span>
-                                    </a>
+                                        <span class="editContent" >5</span>
+                                        </a>
+                                    </button>
+                                </li>
+                                                                <li>
+                                    <button type="sumbit" name ='star' value ='4' class="rating">
+                                         <a href="#">
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >4</span>
+                                        </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                    <button type="sumbit" name ='star' value ='3' class="rating">
+                                        <a href="#">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
-                                        <span class="editContent" >4.0</span>
-                                    </a>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >3</span>
+                                        </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <button type="sumbit" name ='star' value ='2' class="rating">
+                                        <a href="#">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
-                                        <span class="fa fa-star" aria-hidden="true" ></span>
-                                        <span class="fa fa-star-half-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
-                                        <span class="editContent" >3.5</span>
-                                    </a>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >2</span>
+                                        </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <button type="sumbit" name ='star' value ='1' class="rating">
+                                        <a href="#">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
-                                        <span class="fa fa-star" aria-hidden="true" ></span>
-                                        <span class="fa fa-star" aria-hidden="true"></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true"></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
-                                        <span class="editContent" >3.0</span>
-                                    </a>
+                                        <span class="editContent" >1</span>
+                                        </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <span class="fa fa-star" aria-hidden="true"></span>
-                                        <span class="fa fa-star" aria-hidden="true" ></span>
-                                        <span class="fa fa-star-half-o" aria-hidden="true" ></span>
+                                    <button type="sumbit" name ='star' value ='0' class="rating">
+                                        <a href="#">
+                                        <span class="fa fa-star-o" aria-hidden="true"></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
-                                        <span class="editContent" >2.5</span>
-                                    </a>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >0</span>
+                                        </a>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
+                        </form>
                         <!-- //reviews -->
                         <!-- deals -->
                         <div class="deal-leftmk left-side">
@@ -173,11 +166,11 @@
                                             </div>
                                         </div>
                                         <ul class="stars">
-                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 0.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 0.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 1.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 1.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 2.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 2.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 3.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 3.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 4.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 4.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
                                         </ul>
                                     </div>
                                 </div>

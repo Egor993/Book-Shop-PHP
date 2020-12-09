@@ -19,13 +19,6 @@ return array(
 
 	// 'filter\?genre\=([^\s]+)' => 'site/index',
 
-
-
-	'page-([0-9]+)/filter\?([^\s]+)' => 'site/index/$1/$2',
-
-	'page-([0-9]+)\?search\=([^\s]+)/page-([0-9]+)' => 'site/index/$1/$2/$3',
-	'page-([0-9]+)\?search\=([^\s]+)' => 'site/index/$1/$2',
-
 	'page-([0-9]+)' => 'site/index/$1',
 
 	'register' => 'user/register',

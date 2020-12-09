@@ -16,7 +16,7 @@ class Product
         $db = Db::getConnection();
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, image FROM product '
+        $result = $db->query('SELECT id, name, price, image, rating_amount, rating_count FROM product '
                 . 'ORDER BY id ASC '                
                 . 'LIMIT ' . self::SHOW_BY_DEFAULT
                 . ' OFFSET ' . $offset); // 
@@ -27,6 +27,8 @@ class Product
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['image'] = $row['image'];
             $productsList[$i]['price'] = $row['price'];
+            $productsList[$i]['rating_amount'] = $row['rating_amount'];
+            $productsList[$i]['rating_count'] = $row['rating_count'];
             $i++;
         }
 
@@ -44,7 +46,7 @@ class Product
 
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, image FROM product WHERE name LIKE'.'"%'.$word.'%"'
+        $result = $db->query('SELECT id, name, price, image, rating_amount, rating_count FROM product WHERE name LIKE'.'"%'.$word.'%"'
                 . ' ORDER BY id ASC '                
                 . 'LIMIT ' . self::SHOW_BY_DEFAULT
                 . ' OFFSET ' . $offset); // 
@@ -55,6 +57,8 @@ class Product
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['image'] = $row['image'];
             $productsList[$i]['price'] = $row['price'];
+            $productsList[$i]['rating_amount'] = $row['rating_amount'];
+            $productsList[$i]['rating_count'] = $row['rating_count'];
             $i++;
         }
 
@@ -71,7 +75,7 @@ class Product
         $productsList = array();
 
         foreach ($genre as $val) {      
-            $result = $db->query('SELECT id, name, price, image FROM product WHERE genre=' . $val
+            $result = $db->query('SELECT id, name, price, image, rating_amount, rating_count FROM product WHERE genre=' . $val
                     . ' ORDER BY id ASC '                
                     . 'LIMIT ' . self::SHOW_BY_DEFAULT
                     . ' OFFSET ' . $offset); // 
@@ -82,6 +86,8 @@ class Product
                 $productsList[$i]['name'] = $row['name'];
                 $productsList[$i]['image'] = $row['image'];
                 $productsList[$i]['price'] = $row['price'];
+                $productsList[$i]['rating_amount'] = $row['rating_amount'];
+                $productsList[$i]['rating_count'] = $row['rating_count'];
                 $i++;
             }
         }
@@ -143,9 +149,6 @@ class Product
         $products = array();
         
         $db = Db::getConnection();
-        
-
-
 
         $idsString = implode(',', $idsArray);
 
@@ -190,7 +193,6 @@ class Product
     {
         // Соединение с БД
         $db = Db::getConnection();
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Текст запроса к БД
         $sql = "UPDATE product
@@ -260,6 +262,58 @@ class Product
             $result->execute();
         }
         return true;
+    }
+
+    public static function getRatingAmountById($id) {
+        $id = intval($id);
+
+        if ($id) {                        
+            $db = Db::getConnection();
+            
+            $result = $db->query('SELECT rating_amount FROM product WHERE id=' . $id);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            
+            return $result->fetch()['rating_amount'];
+        }
+    }
+
+    public static function getCountRatingById($id) {
+        $id = intval($id);
+
+        if ($id) {                        
+            $db = Db::getConnection();
+            
+            $result = $db->query('SELECT rating_count FROM product WHERE id=' . $id);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            
+            return $result->fetch()['rating_count'];
+        }
+    }
+
+
+    public static function setRating($id, $val, $amount, $count) {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        $count += 1;
+        $sum = ($val + $amount)/$count;
+        $sum = ceil($sum/0.5)*0.5; // Округление до 0.5
+        $sum += $amount;
+
+        // Текст запроса к БД
+        $sql = "UPDATE product
+            SET 
+                rating_amount = :rating_amount,
+                rating_count = :rating_count
+            WHERE id = :id";
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':rating_amount', $sum, PDO::PARAM_STR);
+        $result->bindParam(':rating_count', $count, PDO::PARAM_INT);
+
+        return $result->execute();
     }
 }
 

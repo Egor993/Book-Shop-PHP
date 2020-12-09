@@ -1659,3 +1659,105 @@ a.move-top span {
 .hidden{
 	display: none!important;
 }
+
+.rating-area {
+    overflow: hidden;
+    width: 265px;
+    margin: 0 auto;
+}
+.rating-area:not(:checked) > input {
+    display: none;
+}
+.rating-area:not(:checked) > label {
+    float: right;
+    width: 42px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 32px;
+    line-height: 32px;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+    content: '★';
+}
+.rating-area > input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+    position: relative;
+}
+
+
+.rating-result {
+    width: 265px;
+    margin: 0 auto;
+}
+.rating-result span {
+    padding: 0;
+    font-size: 32px;
+    margin: 0 3px;
+    line-height: 1;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+}
+.rating-result > span:before {
+    content: '★';
+}
+.rating-result > span.active {
+    color: gold;
+    text-shadow: 1px 1px #c60;
+}
+
+.rating-mini {
+    display: inline-block;
+    font-size: 0;
+}
+.rating-mini span {
+    padding: 0;
+    font-size: 20px;
+    line-height: 1;
+    color: lightgrey;
+}
+.rating-mini > span:before {
+    content: '★';
+}
+.rating-mini > span.active {
+    color: gold;
+}
+
+button.rating{  
+    font-size: 20px;
+    background-color: white;
+    border: 0px; /* Green */
+}  
+
+button.rating:hover{  
+    background-color: #fff; /* Green */
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}  
+
+button.genre{  
+    font-size: 18px;
+    background-color: white;
+    border: 0px; /* Green */
+}  
+
+button.genre:hover{  
+    background-color: #fff; /* Green */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}  
