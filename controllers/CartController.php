@@ -121,8 +121,6 @@ class CartController {
                 $errors[] = 'Неправильный телефон';
             }
 
-            print_r($errors);
-
             if ($errors == false) {
                 // Если ошибок нет
                 // Сохраняем заказ в базе данных

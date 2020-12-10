@@ -258,7 +258,7 @@ class Product
     public static function createProduct($options)
     {
 
-        $options['genre'] = 'Биография'; // УДАЛИТЬ
+        // $options['genre'] = 'Биография'; // УДАЛИТЬ
         // Соединение с БД
         $db = Db::getConnection();
 
@@ -352,6 +352,38 @@ class Product
         $result->bindParam(':rating_count', $count, PDO::PARAM_INT);
 
         return $result->execute();
+    }
+
+    public static function addComment($id, $comment) {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'INSERT INTO comments (book_id, comment) VALUES (:book_id, :comment)' ;
+
+        $comment = json_encode($comment, JSON_UNESCAPED_UNICODE);
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':book_id', $id, PDO::PARAM_INT);
+        $result->bindParam(':comment', $comment, PDO::PARAM_STR);
+
+        return $result->execute();
+    }
+
+    public static function viewCommentsByID($id) {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT comment FROM comments WHERE book_id = '.$id);
+        $comments = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $comments[$i] = $row['comment'];
+            $i++;
+        }
+        return $comments;
     }
 }
 

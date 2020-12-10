@@ -9,6 +9,12 @@ class ProductController {
 		$amount = Product::getRatingAmountById($id);
 		$count = Product::getCountRatingById($id);
 
+		$comments = Product::viewCommentsByID($id);
+		foreach($comments as &$comment) {
+			$comment = json_decode($comment, true);
+		}
+		
+
 		if ($amount != 0) {
 			$rating = ceil(($amount/$count)/0.5)*0.5;
 		}
@@ -23,6 +29,16 @@ class ProductController {
 			
 			Product::setRating($id, $_POST['rating'], $amount, $count);
 			if ($rating == 0) $rating = $_POST['rating'];
+		}
+		if ((isset($_POST['submit'])) and (!(isset($_SESSION[$id.'comment'])))) {
+			
+			$comment[$_SESSION['user']] = $_POST['comment'];
+			// $comment['comment'] = $_POST['comment'];	
+
+			$_SESSION[$id.'comment'] = $_POST['comment'];
+			if ($comments == []) $comments[0] = [$_SESSION['user'] => $_POST['comment']];
+			
+			Product::addComment($id, $comment);
 		}
 
 		$viewproduct = array();

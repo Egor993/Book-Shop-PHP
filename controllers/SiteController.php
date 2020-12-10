@@ -7,6 +7,7 @@ class SiteController {
 	if ($page == null) {
 		unset($_SESSION['search']);
 		unset($_SESSION['genre']);
+		unset($_SESSION['rating']);
 		$page = 1;
 	}
 
@@ -27,8 +28,6 @@ class SiteController {
 		unset($_SESSION['search']);
 		unset($_SESSION['genre']);
 	}
-
-	print_r($_SESSION['rating']);
 
 	$latestProducts = array();
 	

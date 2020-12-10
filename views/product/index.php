@@ -68,246 +68,134 @@
              style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(33, 37, 41); font-size: 16px; background-color: rgba(0, 0, 0, 0); font-family: Lato, sans-serif;">
         <div class="container py-md-3">
             <!-- top Products -->
-            <div class="row">
-                <!-- product left -->
-                <div class="side-bar col-lg-4">
+             <div class="row">
+                    <div class="side-bar col-lg-4">
 
-                    <div class="search-bar w3layouts-newsletter">
-                        <h3 class="sear-head editContent" style="outline: none; cursor: inherit;">
-                            Поиск книги</h3>
-                        <form action="#" method="post" class="d-flex editContent"
-                              style="outline: none; cursor: inherit;">
-                            <input type="search" placeholder="Введите название..." name="search"
-                                   class="form-control" required="">
-                            <button class="btn1 btn" style="outline: none; cursor: inherit;"><span
-                                    class="fa fa-search" aria-hidden="true"
-                                    style="outline: none; cursor: inherit;"></span></button>
+                        <div class="search-bar w3layouts-newsletter">
+                            <h3 class="sear-head editContent">Поиск книги</h3>
+                            <form action="/" method="post" class="d-flex editContent" >
+                                <input type="search" placeholder="Введите название..." name="search" class="form-control" required="">
+                                <button class="btn1 btn" ><span class="fa fa-search" aria-hidden="true" ></span></button>
+                            </form>
+                        </div>
+                        <!--preference -->
+                            <form action="/" method="post">
+                            <div class="left-side my-4">
+                                <h3 class="sear-head editContent">Жанры</h3>
+                                <ul class="w3layouts-box-list">
+                                    
+                                        <li class="editContent">
+                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Биография'">Биография</button>
+                                            </button>
+                                        </li>
+                                    
+                                        <li class="editContent">
+                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Драма'">Драма</button>
+                                            </button>
+                                        </li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            </form>
+                        <!-- // preference -->
+
+                        <!-- reviews -->
+                        <form action="/" method="post">
+                        <div class="customer-rev left-side my-4">
+                            <h3 class="sear-head editContent" >Рейтинг</h3>
+                            <ul class="w3layouts-box-list">
+                                <li>
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='5' class="btn rating">
+                                        
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="editContent" >5</span>
+                                    </button>
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='4' class="btn rating">
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >4</span>
+                                    </button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='3' class="btn rating">
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >3</span>
+                                    </button>
+                                    <a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='2' class="btn rating">
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >2</span>
+                                    </button>
+                                    <a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='1' class="btn rating">
+                                        <span class="fa fa-star" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true"></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >1</span>
+                                    </button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='0' class="btn rating">
+                                        <span class="fa fa-star-o" aria-hidden="true"></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="fa fa-star-o" aria-hidden="true" ></span>
+                                        <span class="editContent" >0</span>
+                                    </button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                         </form>
-                    </div>
-                    <!--preference -->
-                    <div class="left-side my-4">
-                        <h3 class="sear-head editContent" style="outline: none; cursor: inherit;">
-                            Жанры</h3>
-                        <ul class="w3layouts-box-list">
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">Аниме</span>
-                            </li>
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">Боевики</span>
-                            </li>
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">Комедии</span>
-                            </li>
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">Ужасы</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- // preference -->
-                    <!-- discounts -->
-                    <div class="left-side">
-                        <h3 class="sear-head editContent" style="outline: none; cursor: inherit;">
-                            Год</h3>
-                        <ul class="w3layouts-box-list">
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">2020</span>
-                            </li>
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">2019</span>
-                            </li>
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">2018</span>
-                            </li>
-                            <li>
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">2017</span>
-                            </li>
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">2016</span>
-                            </li>
-                            <li class="editContent" style="outline: none; cursor: inherit;">
-                                <input type="checkbox" class="checked">
-                                <span class="span editContent"
-                                      style="outline: none; cursor: inherit;">2015</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- //discounts -->
-                    <!-- reviews -->
-                    <div class="customer-rev left-side my-4">
-                        <h3 class="sear-head editContent" style="outline: none; cursor: inherit;">
-                            Рейтинг</h3>
-                        <ul class="w3layouts-box-list">
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="editContent"
-                                          style="outline: none; cursor: inherit;">5.0</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="editContent"
-                                          style="outline: none; cursor: inherit;">4.0</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star-half-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="editContent"
-                                          style="outline: none; cursor: inherit;">3.5</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star" aria-hidden="true"></span>
-                                    <span class="fa fa-star-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="editContent"
-                                          style="outline: none; cursor: inherit;">3.0</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star" aria-hidden="true"></span>
-                                    <span class="fa fa-star" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star-half-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="fa fa-star-o" aria-hidden="true"
-                                          style="outline: none; cursor: inherit;"></span>
-                                    <span class="editContent"
-                                          style="outline: none; cursor: inherit;">2.5</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- //reviews -->
-                    <!-- deals -->
-                    <div class="deal-leftmk left-side">
-                        <h3 class="sear-head editContent">
-                            Последние добавленные</h3>
-                        <div class="special-sec1 row mt-3 editContent">
-                            <div class="img-deals col-md-4">
-                                <img src="/template/images/s4.jpg" class="img-fluid" alt="">
-                            </div>
-                            <div class="img-deal1 col-md-4">
-                                <h3 class="editContent">Рэмбо: Последняя кровь</h3>
-                                <a href="shop-single.html" class="editContent"
-                                   style="outline: none; cursor: inherit;"></a>
-                            </div>
+                        <!-- //reviews -->
+                        <!-- deals -->
+                        <div class="deal-leftmk left-side">
+                            <h3 class="sear-head editContent">Последние добавленные</h3>
+                            <div class="special-sec1 row mt-3 editContent">
+                                <div class="img-deals col-md-4">
+                                    <img src="/template/images/s5.jpg" class="img-fluid" alt="">
+                                </div>
+                                <div class="img-deal1 col-md-4">
+                                    <h3 class="editContent">Крестный отец</h3>
+                                    <a href="moviesingle.html" class="editContent" ></a>
+                                </div>
 
+                            </div>
                         </div>
-                        <div class="special-sec1 row mt-3 editContent"
-                             style="outline: none; cursor: inherit;">
-                            <div class="img-deals col-md-4">
-                                <img src="/template/images/s2.jpg" class="img-fluid" alt=""
-                                     style="outline: none; cursor: inherit;">
-                            </div>
-                            <div class="img-deal1 col-md-8">
-                                <h3 class="editContent" style="outline: none; cursor: inherit;">
-                                    Холодное сердце 2</h3>
-                                <a href="shop-single.html" class="editContent"
-                                   style="outline: none; cursor: inherit;"></a>
-                            </div>
-
-                        </div>
-                        <div class="special-sec1 row mt-3 editContent"
-                             style="outline: none; cursor: inherit;">
-                            <div class="img-deals col-md-4">
-                                <img src="/template/images/s1.jpg" class="img-fluid" alt=""
-                                     style="outline: none; cursor: inherit;">
-                            </div>
-                            <div class="img-deal1 col-md-8">
-                                <h3 class="editContent" style="outline: none; cursor: inherit;">К
-                                    звездам</h3>
-                                <a href="shop-single.html" class="editContent"
-                                   style="outline: none; cursor: inherit;"></a>
-                            </div>
-
-                        </div>
-                        <div class="special-sec1 row mt-3 editContent"
-                             style="outline: none; cursor: inherit;">
-                            <div class="img-deals col-md-4">
-                                <img src="/template/images/s5.jpg" class="img-fluid" alt=""
-                                     style="outline: none; cursor: inherit;">
-                            </div>
-                            <div class="img-deal1 col-md-8">
-                                <h3 class="editContent" style="outline: none; cursor: inherit;">
-                                    Терминатор: Темные судьбы</h3>
-                                <a href="shop-single.html" class="editContent"
-                                   style="outline: none; cursor: inherit;"></a>
-                            </div>
-
-                        </div>
-                        <div class="special-sec1 row mt-3 editContent"
-                             style="outline: none; cursor: inherit;">
-                            <div class="img-deals col-md-4">
-                                <img src="/template/images/s3.jpg" class="img-fluid" alt=""
-                                     style="outline: none; cursor: inherit;">
-                            </div>
-                            <div class="img-deal1 col-md-8">
-                                <h3 class="editContent" style="outline: none; cursor: inherit;">
-                                    Джокер</h3>
-                                <a href="shop-single.html" class="editContent"
-                                   style="outline: none; cursor: inherit;"></a>
-                            </div>
-
-                        </div>
-                    </div>
                     <!-- //deals -->
                     <!-- //deals -->
 
@@ -447,72 +335,37 @@
                             <div class="contact-single">
                                 <h3 class="editContent" style="outline: none; cursor: inherit;">
                                     <span class="sub-tittle editContent"
-                                          style="outline: none; cursor: inherit;">02</span>Оставить отзыв</h3>
-                                <form action="#" method="get" class="mt-4">
+                                          style="outline: none; cursor: inherit;"></span>Оставить отзыв</h3>
+                                <form action="/product/<?php echo $id; ?>" method="post" class="mt-4">
                                     <div class="form-group editContent"
                                          style="outline: none; cursor: inherit;">
                                         <label for="contactcomment" class="editContent"
                                                style="outline: none; cursor: inherit;">Ваш комментарий
                                             *</label>
-                                        <textarea class="form-control border" rows="5"
-                                                  id="contactcomment" required=""></textarea>
+                                        <textarea class="form-control border" rows="10" cols="90" 
+                                                  id="contactcomment" required="" name='comment'></textarea>
                                     </div>
-                                    <div class="d-sm-flex">
-                                        <div class="col-sm-6 form-group p-0 editContent"
-                                             style="outline: none; cursor: inherit;">
-                                            <label for="contactusername" class="editContent"
-                                                   style="outline: none; cursor: inherit;">Имя
-                                                *</label>
-                                            <input type="text" class="form-control border"
-                                                   id="contactusername" required="">
-                                        </div>
-                                        <div class="col-sm-6 form-group ml-sm-3 editContent"
-                                             style="outline: none; cursor: inherit;">
-                                            <label for="contactemail" class="editContent"
-                                                   style="outline: none; cursor: inherit;">Email
-                                                *</label>
-                                            <input type="email" class="form-control border"
-                                                   id="contactemail" required="">
-                                        </div>
-                                    </div>
-                                    <button type="submit"
+                                    <button type="submit" name="submit"
                                             class="mt-3 btn btn-success btn-block py-3"
                                             style="outline: none; cursor: inherit;">Отправить
                                     </button>
                                 </form>
                             </div>
                             <!--  //contact form grid ends here -->
-                        </div>
+                        <?php for($i = 0; $i < count($comments); $i++): ?>
                         <div class="media py-5">
                             <img src="/template/images/te2.jpg" class="mr-3 img-fluid" alt="image"
                                  style="outline: none; cursor: inherit;">
                             <div class="media-body mt-4">
                                 <h5 class="mt-0 editContent"
-                                    style="outline: none; cursor: inherit;">Daniel Doe</h5>
+                                    style="outline: none; cursor: inherit;"><?php foreach($comments[$i] as $name=>$text) echo $name; ?></h5>
                                 <p class="mt-2 editContent" style="outline: none; cursor: inherit;">
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                                    vulputate at, tempus viverra turpis.
+                                    <?php foreach($comments[$i] as $name=>$text) echo $text; ?>
                                 </p>
-                                <div class="media mt-5 editContent"
-                                     style="outline: none; cursor: inherit;">
-                                    <a class="pr-3" href="#">
-                                        <img src="/template/images/te1.jpg" class="img-fluid "
-                                             alt="image" style="outline: none; cursor: inherit;">
-                                    </a>
-                                    <div class="media-body">
-                                        <h5 class="mt-0 editContent"
-                                            style="outline: none; cursor: inherit;">Leia Organa</h5>
-                                        <p class="mt-2 editContent"
-                                           style="outline: none; cursor: inherit;"> Cras sit amet
-                                            nibh libero, in gravida nulla. Nulla vel metus
-                                            scelerisque ante sollicitudin. Cras purus odio,
-                                            vestibulum in vulputate at, tempus viverra turpis. Fusce
-                                            condimentum nunc ac nisi vulputate fringilla..</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+                            </div>
+                         <?php endfor;?>
+
                     </div>
                 </div>
             </div>
