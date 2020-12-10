@@ -1,24 +1,156 @@
 <?php include ROOT.'/views/include/header.php'; ?>
+<link rel="stylesheet" href="/template/css/profile.css" type="text/css" media="all">
+
+<div class="container emp-profile">
+            <form form enctype="multipart/form-data" method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="template/images/profile/9975982_p1070347.jpg" alt=""/>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        <?php echo $data['name']; ?>
+                                    </h5>
+                                    <br>
+                                    <h6>
+                                        (User)
+                                    </h6>
+                                    <p class="proile-rating">Покупок : <span>0</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">Информация</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="profile/edit" role="tab" aria-controls="profile" aria-selected="false">Настройки</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p><input type="file" name="image"/></p>
+                            <button type="sumbit" class="btn btn-success btn-block follow" autofocus>Обновить фотографию</button>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><?php echo $data['id']; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><?php echo $data['name']; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><?php echo $data['email']; ?></p>
+                                            </div>
+                                        </div>
+                                      
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Experience</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Hourly Rate</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>10$/hr</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Total Projects</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>230</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>English Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Availability</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 months</p>
+                                            </div>
+                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Your Bio</label><br/>
+                                        <p>Your detail description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
+<!-- 
 
 <body>
     <div class="container main-secction">
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 image-section">
-                <img src="https://png.pngtree.com/thumb_back/fw800/back_pic/00/08/57/41562ad4a92b16a.jpg">
-            </div>
+                <br>
             <div class="row user-left-part">
                 <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
                     <div class="row ">
                         <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-                            <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle">
+                            <img src="template/images/profile/3qAAAgO4ieA-1920.jpg" class="rounded-circle">
                         </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
-                            <button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact" class="btn btn-success btn-block follow" autofocus>Обновить фотографию</button> 
+                        <br><br><br><br><br><br><br><br><br><br>
+                        <form enctype="multipart/form-data" method="post">
+
+						<div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+						    
+						<div class="input-wrapper">
+						  <input type="file" name="image" preview-target-id="preview_1">
+						</div>
+						<br>
+                            <button type="sumbit
+                            " class="btn btn-success btn-block follow" autofocus>Обновить фотографию</button> 
                                    <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
                                 <div class="border"></div>
                                 <p></p>
                             </div>                                 
                         </div>
+                    	</form>
                         <div class="row user-detail-row">
                             <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
                                 <div class="border"></div>
@@ -34,7 +166,8 @@
                         <div class="col-md-12 profile-header">
                             <div class="row">
                                 <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
-                                    <h1>Juan Perez</h1>
+                                    <h1><?php echo $data['name']; ?></h1>
+                                    <br>
                                     <h5>Developer</h5>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
@@ -55,7 +188,7 @@
                                               </ul>
                                               
                                               <!-- Tab panes -->
-                                              <div class="tab-content">
+<!--                                               <div class="tab-content">
                                                 <div role="tabpanel" class="tab-pane fade show active" id="profile">
                                                         <div class="row">
                                                                 <div class="col-md-2">
@@ -89,11 +222,11 @@
         </div>
     </div>
 </div>
-</div>                          
+</div>                   -->        
 
                                 
 
-
+<!-- 
 
     <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -128,4 +261,5 @@
             </div>
         </div>
     </div>
-</body>
+</body> -->
+ -->

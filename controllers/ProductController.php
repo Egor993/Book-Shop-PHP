@@ -5,6 +5,7 @@ include_once ROOT. '/models/Product.php';
 class ProductController {
 
 	public function actionView($id) {
+		unset($_SESSION[$id.'comment']);
 
 		$amount = Product::getRatingAmountById($id);
 		$count = Product::getCountRatingById($id);

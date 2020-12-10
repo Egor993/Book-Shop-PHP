@@ -204,7 +204,7 @@
     
         <a class="related-widget-wrapper-link add-related" id="add_id_author"
             href="/admin/main/author/add/?_to_field=id&amp;_popup=1"
-            title="Добавить ещё один объект типа "Автор""><img src="/static/admin/img/icon-addlink.svg" alt="Добавить"></a>
+            title="Добавить ещё один объект типа Автор"><img src="/static/admin/img/icon-addlink.svg" alt="Добавить"></a>
     
 </div>
                         
@@ -234,7 +234,7 @@
     
         <a class="related-widget-wrapper-link add-related" id="add_id_genres"
             href="/admin/main/genre/add/?_to_field=id&amp;_popup=1"
-            title="Добавить ещё один объект типа "Жанр""><img src="/static/admin/img/icon-addlink.svg" alt="Добавить"></a>
+            title="Добавить ещё один объект типа Жанр"><img src="/static/admin/img/icon-addlink.svg" alt="Добавить"></a>
     
 </div>
                         

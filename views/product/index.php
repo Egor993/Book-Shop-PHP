@@ -336,7 +336,7 @@
                                 <h3 class="editContent" style="outline: none; cursor: inherit;">
                                     <span class="sub-tittle editContent"
                                           style="outline: none; cursor: inherit;"></span>Оставить отзыв</h3>
-                                <form action="/product/<?php echo $id; ?>" method="post" class="mt-4">
+                                <form action="#" method="post" class="mt-4">
                                     <div class="form-group editContent"
                                          style="outline: none; cursor: inherit;">
                                         <label for="contactcomment" class="editContent"
