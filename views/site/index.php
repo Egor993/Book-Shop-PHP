@@ -32,12 +32,12 @@
                                 <ul class="w3layouts-box-list">
                                     
                                         <li class="editContent">
-                                             <button type="sumbit" class="btn genre">Биография</button>
+                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Биография'">Биография</button>
                                             </button>
                                         </li>
                                     
                                         <li class="editContent">
-                                             <button type="sumbit" class="btn genre">Драма</button>
+                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Драма'">Драма</button>
                                             </button>
                                         </li>
                                     
@@ -53,76 +53,77 @@
                             <h3 class="sear-head editContent" >Рейтинг</h3>
                             <ul class="w3layouts-box-list">
                                 <li>
-                                    <button type="sumbit" name ='star' value ='5' class="rating">
-                                        <a href="#">
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='5' class="btn rating">
+                                        
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="editContent" >5</span>
-                                        </a>
                                     </button>
+                                    </a>
                                 </li>
-                                                                <li>
-                                    <button type="sumbit" name ='star' value ='4' class="rating">
-                                         <a href="#">
+                                 <li>
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='4' class="btn rating">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="editContent" >4</span>
-                                        </a>
                                     </button>
+                                    </a>
                                 </li>
                                 <li>
-                                    <button type="sumbit" name ='star' value ='3' class="rating">
-                                        <a href="#">
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='3' class="btn rating">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="editContent" >3</span>
-                                        </a>
                                     </button>
+                                    <a>
                                 </li>
                                 <li>
-                                    <button type="sumbit" name ='star' value ='2' class="rating">
-                                        <a href="#">
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='2' class="btn rating">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="editContent" >2</span>
-                                        </a>
                                     </button>
+                                    <a>
                                 </li>
                                 <li>
-                                    <button type="sumbit" name ='star' value ='1' class="rating">
-                                        <a href="#">
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='1' class="btn rating">
                                         <span class="fa fa-star" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true"></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="editContent" >1</span>
-                                        </a>
                                     </button>
+                                    </a>
                                 </li>
                                 <li>
-                                    <button type="sumbit" name ='star' value ='0' class="rating">
-                                        <a href="#">
+                                    <a href="#">
+                                    <button type="sumbit" name ='rating' value ='0' class="btn rating">
                                         <span class="fa fa-star-o" aria-hidden="true"></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="fa fa-star-o" aria-hidden="true" ></span>
                                         <span class="editContent" >0</span>
-                                        </a>
                                     </button>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -167,10 +168,10 @@
                                         </div>
                                         <ul class="stars">
                                             <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 0.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 0.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 1.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 1.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 2.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 2.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 3.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 3.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
-                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] > 4.5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 4.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] >= 2) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 1.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] >= 3) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 2.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] >= 4) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 3.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="<?php if ($product['rating_amount']/$product['rating_count'] >= 5) echo 'fa fa-star'; else if ($product['rating_amount']/$product['rating_count'] == 4.5) echo 'fa fa-star-half-o'; else echo 'fa fa-star-o';?>" aria-hidden="true" ></span></a></li>
                                         </ul>
                                     </div>
                                 </div>

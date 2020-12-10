@@ -1751,13 +1751,28 @@ button.rating:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }  
 
+button.rating:active {
+  background-color: #fff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 button.genre{  
     font-size: 18px;
     background-color: white;
-    border: 0px; /* Green */
 }  
 
 button.genre:hover{  
     background-color: #fff; /* Green */
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24), 0 8px 20px 0 rgba(0,0,0,0.19);
 }  
+
+button.genre:active {
+  background-color: #fff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/*li {
+    list-style-type: none; /* Убираем маркеры */
+}*/

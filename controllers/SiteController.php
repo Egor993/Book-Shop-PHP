@@ -21,6 +21,15 @@ class SiteController {
 		unset($_SESSION['search']);
 	}
 
+	if (isset($_POST['rating'])) {
+
+		$_SESSION['rating'] = $_POST['rating'];
+		unset($_SESSION['search']);
+		unset($_SESSION['genre']);
+	}
+
+	print_r($_SESSION['rating']);
+
 	$latestProducts = array();
 	
 	if (isset($_SESSION['search'])) {
@@ -33,6 +42,12 @@ class SiteController {
 
 		$latestProducts = Product::getProductsByGenre($page, $_SESSION['genre']);
 		$total = Product::getTotalProductsByGenre($_SESSION['genre']);
+	}
+
+	else if (isset($_SESSION['rating'])) {
+
+		$latestProducts = Product::getProductsByRating($page, $_SESSION['rating']);
+		$total = Product::getTotalProductsByRating($_SESSION['rating']);
 	}
 
 	else {
