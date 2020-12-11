@@ -12,12 +12,5 @@ class AdminController extends AdminBase {
 
 	}
 
-	public function actionAdd() {
-
-		require_once(ROOT . '/views/admin/add.php');
-
-		return true;
-
-	}
 }
 

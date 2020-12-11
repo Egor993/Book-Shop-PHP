@@ -32,7 +32,7 @@
     <div class="module" id="changelist">
       
 
-      <form id="changelist-form" method="post" novalidate><input type="hidden" name="" value="">
+      <form id="changelist-form" method="post" novalidate><input type="hidden">
 
       
           
@@ -92,7 +92,7 @@
     </td>
     	<th class="field-__str__">
      		 <a href="/admin/products/update/<?php echo $product['id'];?>">
-     		 	 ID <?php echo  $product['id']; ?> Книга <?php echo  $product['name']; ?> |Автор | <?php echo  $product['author']; ?>
+     		 	 ID <?php echo  $product['id']; ?> | Книга - <?php echo  $product['name']; ?>. Автор - <?php echo  $product['author']; ?>
      		 </a>
  		</th>
 	</tr>
@@ -100,8 +100,7 @@
 
 </tbody>
 </table>
-
-
+</form>
           
       
       

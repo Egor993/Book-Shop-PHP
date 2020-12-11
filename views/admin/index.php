@@ -13,7 +13,7 @@
         <div class="app-main module">
         <table>
         <caption>
-            <a href="/admin/main/" class="section" title="Модели в приложении Main">Главная</a>
+            <a href="/admin" class="section" title="Модели в приложении Main">Главная</a>
         </caption>
         
             <tr class="model-orders">

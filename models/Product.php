@@ -258,18 +258,20 @@ class Product
     public static function createProduct($options)
     {
 
-        // $options['genre'] = 'Биография'; // УДАЛИТЬ
+        $options['genre'] = 'Биография'; // УДАЛИТЬ
         // Соединение с БД
         $db = Db::getConnection();
 
         // Текст запроса к БД
         $sql = 'INSERT INTO product '
                 . '(name, price, author,'
-                . 'description, image, genre)'
+                . 'description, image, genre, rating_amount, rating_count)'
                 . 'VALUES '
                 . '(:name, :price, :author,'
-                . ':description, :image, :genre)';
+                . ':description, :image, :genre, :rating_amount, :rating_count)';
 
+        $rating_amount = 0;
+        $rating_count = 0;
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
@@ -278,6 +280,8 @@ class Product
         $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':genre', $options['genre'], PDO::PARAM_STR);
+        $result->bindParam(':rating_amount', $rating_amount, PDO::PARAM_STR);
+        $result->bindParam(':rating_count', $rating_count, PDO::PARAM_STR);
         if ($result->execute()) {
             // Если запрос выполенен успешно, возвращаем id добавленной записи
             return $db->lastInsertId();
@@ -286,7 +290,7 @@ class Product
         return 0;
     }
 
-        public static function deleteProductById($ids) {
+        public static function deleteProductById($id) {
         // Соединение с БД
         $db = Db::getConnection();
 
@@ -294,11 +298,11 @@ class Product
         $sql = 'DELETE FROM product WHERE id = :id';
 
         // Получение и возврат результатов. Используется подготовленный запрос
-        foreach($ids as $id) {
-            $result = $db->prepare($sql);
-            $result->bindParam(':id', $id, PDO::PARAM_INT);
-            $result->execute();
-        }
+        // foreach($ids as $id) {
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+        // }
         return true;
     }
 

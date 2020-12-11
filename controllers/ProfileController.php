@@ -7,19 +7,22 @@
 class ProfileController {
 
 	public function actionIndex() {
-
-        $name = $_SESSION['user'];
-
+        
+        $name = $_SESSION['user'];;
         $data = User::getUserData($name);
-        if (isset($_FILES['image'])){
+        if (isset($data['image'])) {
+            $image_name = $data['image'];
+        }
+
+        if ((isset($_FILES['image'])) and ($_FILES['image']['name'] != '')){
             // Настроки загружаемого файла
-                // Проверяем тип файла
+            // Проверяем тип файла
             $types = array('image/png', 'image/jpeg');
 
             if (!in_array($_FILES['image']['type'], $types))
             echo('Запрещённый тип файла.');
 
-                // Проверяем размер файла
+             // Проверяем размер файла
             $size = 1024000;
 
             if ($_FILES['image']['size'] > $size)
@@ -74,6 +77,7 @@ class ProfileController {
                 }
             }
             $image_name = resize($_FILES['image']);
+            User::setImage($name, $image_name);
             copy('template/images/tmp/' . $image_name, 'template/images/profile/' . $image_name);
             unlink('template/images/tmp/' . $image_name);
         }
@@ -89,19 +93,19 @@ class ProfileController {
 
     public function actionEdit() {
         // Получаем идентификатор пользователя из сессии
-        $name = $_SESSION['user'];;
-        
+            $name = $_SESSION['user'];;
         $data = User::getUserData($name);
+        $image_name = $data['image'];
 
-                if (isset($_FILES['image'])){
+        if (isset($_FILES['image'])){
             // Настроки загружаемого файла
-                // Проверяем тип файла
+            // Проверяем тип файла
             $types = array('image/png', 'image/jpeg');
 
             if (!in_array($_FILES['image']['type'], $types))
             echo('Запрещённый тип файла.');
 
-                // Проверяем размер файла
+             // Проверяем размер файла
             $size = 1024000;
 
             if ($_FILES['image']['size'] > $size)
@@ -156,6 +160,7 @@ class ProfileController {
                 }
             }
             $image_name = resize($_FILES['image']);
+            User::setImage($name, $image_name);
             copy('template/images/tmp/' . $image_name, 'template/images/profile/' . $image_name);
             unlink('template/images/tmp/' . $image_name);
         }

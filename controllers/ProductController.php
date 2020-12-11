@@ -5,6 +5,7 @@ include_once ROOT. '/models/Product.php';
 class ProductController {
 
 	public function actionView($id) {
+
 		unset($_SESSION[$id.'comment']);
 
 		$amount = Product::getRatingAmountById($id);
@@ -14,6 +15,9 @@ class ProductController {
 		foreach($comments as &$comment) {
 			$comment = json_decode($comment, true);
 		}
+		$name = $_SESSION['user'];;
+        $data = User::getUserData($name);
+        $image_name = $data['image'];
 		
 
 		if ($amount != 0) {

@@ -38,10 +38,9 @@
                             <li><a href="/register">Регистрация</a></li>
                             <li><a href="/login">Вход</a></li>
                             <?php else: ?>
-                            <li>(<?php echo $_SESSION['user']?>)<a href="/exit">Выход</a></li>
-                            <li><a href="/profile">Личный кабинет</a></li>
+                            <li><a href="/profile">Профиль</a></li>
                             <?php endif; ?>
-                            <li><a href="/cart">Корзина</a></li>
+                            <li><a href="/cart"><img src="/template/images/full-cart-light.png" height="40" alt=""/></a></li>
                             <span id='cart-count'><?php echo Cart::countItems(); ?></span>
                         </ul>
                     </nav>

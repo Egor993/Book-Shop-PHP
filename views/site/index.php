@@ -154,11 +154,12 @@
                             <div class="col-md-3">
                                 <div class="product-shoe-info editContent text-center mt-lg-4" >
                                     <div class="men-thumb-item">
+                                        <a href="product/<?php echo $product['id'];?>" class="editContent" >
                                         <img src="/template/images/<?php echo $product['image'];?>"  class="img-fluid">
                                     </div>
                                     <div class="item-info-product">
                                         <h4>
-                                            <a href="product/<?php echo $product['id'];?>" class="editContent" ><?php echo $product['name'];?></a>
+                                            <?php echo $product['name'];?></a>
                                         </h4>
                                         <a class='add-to-cart'href="#" data-id='<?php echo $product['id']; ?>'>В корзину</a>
                                         <div class="product_price">

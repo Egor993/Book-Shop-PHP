@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="template/images/profile/9975982_p1070347.jpg" alt=""/>
+                            <img src="/template/images/profile/<?php echo $image_name ?>" alt=""/>
                         </div>
 
                     </div>
@@ -30,7 +30,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2"><a href="/exit"><input type="button" class="profile-edit-btn"value="ВЫХОД"></a>
                     </div>
                 </div>
                 <div class="row">

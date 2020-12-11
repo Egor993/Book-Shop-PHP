@@ -16,6 +16,11 @@ class AdminOrderController extends AdminBase
         self::checkAdmin();
 
         // Получаем список заказов
+        if (isset($_POST['_selected_action'])) {
+            foreach($_POST['_selected_action'] as $id){
+                Order::deleteOrderById($id);
+            }
+        }
         $ordersList = Order::getOrdersList();
 
         // Подключаем вид

@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="/template/images/profile/9975982_p1070347.jpg" alt=""/>
+                            <img src="/template/images/profile/<?php echo $image_name ?>" alt=""/>
                         </div>
 
                     </div>

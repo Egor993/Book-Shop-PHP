@@ -354,7 +354,7 @@
                             <!--  //contact form grid ends here -->
                         <?php for($i = 0; $i < count($comments); $i++): ?>
                         <div class="media py-5">
-                            <img src="/template/images/te2.jpg" class="mr-3 img-fluid" alt="image"
+                            <img src="/template/images/profile/<?php echo $image_name ?>" class="mr-3 img-fluid" alt="image"
                                  style="outline: none; cursor: inherit;">
                             <div class="media-body mt-4">
                                 <h5 class="mt-0 editContent"
