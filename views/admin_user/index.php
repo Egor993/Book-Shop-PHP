@@ -62,14 +62,14 @@
 </thead>
 <tbody>
 
-<?php foreach ($ordersList as $order): ?>
+<?php foreach ($users as $user): ?>
 	<tr class="row1">
     <td class="action-checkbox">
-    	<input type="checkbox" name="_selected_action[]" value="<?php echo $order['id'];?>" class="action-select">
+    	<input type="checkbox" name="_selected_action[]" value="<?php echo $$user['id']['id'];?>" class="action-select">
     </td>
     	<th class="field-__str__">
-     		 <a href="/admin/orders/view/<?php echo $order['id'];?>">
-     		 	 Пользователь <?php echo  $order['user_name']; ?> сделал заказ <?php echo 'ID '.$order['id'];?> (<?php echo $order['date'];?>)
+     		 <a href="/admin/users/view/<?php echo $user['name'];?>">
+     		 	 ID <?php echo  $user['id']; ?> Пользователь <?php echo  $user['name']; ?>
      		 </a>
  		</th>
 	</tr>

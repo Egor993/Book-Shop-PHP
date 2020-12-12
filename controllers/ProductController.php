@@ -6,15 +6,11 @@ class ProductController {
 
 	public function actionView($id) {
 
-		unset($_SESSION[$id.'comment']);
+		// unset($_SESSION[$id.'comment']);
 
 		$amount = Product::getRatingAmountById($id);
 		$count = Product::getCountRatingById($id);
 
-		$comments = Product::viewCommentsByID($id);
-		foreach($comments as &$comment) {
-			$comment = json_decode($comment, true);
-		}
 		$name = $_SESSION['user'];;
         $data = User::getUserData($name);
         $image_name = $data['image'];
@@ -25,9 +21,6 @@ class ProductController {
 		}
 		else $rating = 0;
 
-		// if (isset($_SESSION[$id.'i'])) $check = 1;
-		// echo $check;
-
 		if ((isset($_POST['rating'])) and (!(isset($_SESSION[$id.'i'])))) {
 
 			$_SESSION[$id.'i'] = $_POST['rating'];
@@ -37,14 +30,16 @@ class ProductController {
 		}
 		if ((isset($_POST['submit'])) and (!(isset($_SESSION[$id.'comment'])))) {
 			
-			$comment[$_SESSION['user']] = $_POST['comment'];
-			// $comment['comment'] = $_POST['comment'];	
+			$comment = $_POST['comment'];	
 
 			$_SESSION[$id.'comment'] = $_POST['comment'];
-			if ($comments == []) $comments[0] = [$_SESSION['user'] => $_POST['comment']];
 			
-			Product::addComment($id, $comment);
+			Product::addComment($id, $name, $comment);
 		}
+
+		$comments = Product::viewCommentsByBook_id($id);
+		
+		$lastAdded = Product::getLastAdded();
 
 		$viewproduct = array();
         $viewproduct = Product::getProductById($id);

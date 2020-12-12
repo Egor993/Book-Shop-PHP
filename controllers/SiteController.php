@@ -57,6 +57,8 @@ class SiteController {
 	
 	$pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
+	$lastAdded = Product::getLastAdded();
+
 	require_once(ROOT . '/views/site/index.php');
 
 	return true;

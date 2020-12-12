@@ -42,20 +42,20 @@
 
 	<div class="col-lg-6">
 		<div class="box-element">
-			<a  class="btn btn-outline-dark" href="/cart">&#x2190; Back to Cart</a>
+			<a  class="btn btn-outline-dark" href="/cart">&#x2190; Вернуться в корзину</a>
 			<hr>
-			<h3>Order Summary</h3>
+			<h3>Общая информация</h3>
 			<hr>
 			<?php foreach ($products as $product): ?>
 				<div class="cart-row">
 					<div style="flex:2"><img class="row-image" src="template/images/<?php echo $product['image']?>"></div>
 					<div style="flex:2"><a href="/book_list/krestnyj-otec/"><?php echo $product['name']; ?></a></div>
-					<div style="flex:1"><p>5$</p></div>
+					<div style="flex:1"><p><?php echo $product['price']; ?> руб</p></div>
 					<div style="flex:1"><p>x<?php echo $productsInCart[$product['id']]; ?> шт</p></div>
 				</div>
 			<?php endforeach; ?>
-			<h5>Items: 8</h5>
-			<h5>Total: 44$</h5>
+			<h5>Кол-во: <?php echo $totalQuantity; ?></h5>
+			<h5>Общая стоимость: <?php echo $totalPrice; ?> руб</h5>
 		</div>
 	</div>
 </div>

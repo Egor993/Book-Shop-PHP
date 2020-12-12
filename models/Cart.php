@@ -33,6 +33,23 @@ class Cart
         return self::countItems();
     }
 
+    public static function decreaseProduct($id)
+    {
+        $id = intval($id);
+
+        // Пустой массив для товаров в корзине
+        $productsInCart = $_SESSION['products'];
+
+        $productsInCart[$id]--;
+        if ($productsInCart[$id] == 0) {
+            unset($productsInCart[$id]);
+        }
+
+        $_SESSION['products'] = $productsInCart;
+
+        return self::countItems();
+    }
+
     /**
      * Подсчет количество товаров в корзине (в сессии)
      * @return int 
@@ -70,7 +87,7 @@ class Cart
         return $total;
     }
 
-        public static function deleteProduct($id) {
+        public static function deleteProducts($id) {
         // Получаем массив с идентификаторами и количеством товаров в корзине
         $productsInCart = self::getProducts();
 

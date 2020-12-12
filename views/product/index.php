@@ -25,14 +25,14 @@
                 <!-- nav -->
                 <nav class="py-4">
                     <div id="logo">
-                        <h1><a href="index.html" class="editContent"
-                               style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(255, 255, 255); font-size: 40px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Source Sans Pro&quot;, sans-serif;">Book Shop</a>
+                        <h1><a href="/" class="editContent"
+                               >Book Shop</a>
                         </h1>
                     </div>
 
                     <label for="drop" class="toggle">Menu</label>
                     <input type="checkbox" id="drop">
-						<ul class="menu mt-2">
+                        <ul class="menu mt-2">
                             <li><a href="/">Главная</a></li>
                             <li><a href="#">О магазине</a></li>
                             <li><a href="#">Контакты</a></li>
@@ -40,10 +40,9 @@
                             <li><a href="/register">Регистрация</a></li>
                             <li><a href="/login">Вход</a></li>
                             <?php else: ?>
-                            <li>(<?php echo $_SESSION['user']?>)<a href="/exit">Выход</a></li>
-                            <li><a href="/profile">Личный кабинет</a></li>
+                            <li><a href="/profile">Профиль</a></li>
                             <?php endif; ?>
-                            <li><a href="/cart">Корзина</a></li>
+                            <li><a href="/cart"><img src="/template/images/full-cart-light.png" height="40" alt=""/></a></li>
                             <span id='cart-count'><?php echo Cart::countItems(); ?></span>
                         </ul>
                 </nav>
@@ -51,15 +50,15 @@
             </div>
         </header>
     </div>
+</div>
     <!--//main-content-->
     <!---->
     <ol class="breadcrumb editContent">
         <li class="breadcrumb-item">
-            <a href="index.html" class="editContent"
-               style="outline: none; cursor: inherit;">Home</a>
+            <a href="/">Главная</a>
         </li>
         <li class="breadcrumb-item active editContent" style="outline: none; cursor: inherit;">
-            Single
+            Книга
         </li>
     </ol>
     <!---->
@@ -185,16 +184,19 @@
                         <!-- deals -->
                         <div class="deal-leftmk left-side">
                             <h3 class="sear-head editContent">Последние добавленные</h3>
-                            <div class="special-sec1 row mt-3 editContent">
+                            <?php foreach ($lastAdded as $product): ?>
+                            <div class="special-sec1 row mt-3 editContent" >
                                 <div class="img-deals col-md-4">
-                                    <img src="/template/images/s5.jpg" class="img-fluid" alt="">
+                                    <a href="/product/<?php echo $product['id']; ?>">
+                                    <img src="/template/images/<?php echo $product['image'];?>" class="img-fluid" alt="" >
                                 </div>
-                                <div class="img-deal1 col-md-4">
-                                    <h3 class="editContent">Крестный отец</h3>
+                                <div class="img-deal1 col-md-8">
+                                    <h3 class="editContent" ><?php echo $product['name']; ?></h3>
                                     <a href="moviesingle.html" class="editContent" ></a>
                                 </div>
-
+                                </a>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                     <!-- //deals -->
                     <!-- //deals -->
@@ -208,9 +210,8 @@
                             <img src="/template/images/<?php echo $viewproduct['image'];?>" class="img-fluid" alt="">
                         </div>
                         <div class="desc1-right col-md-6 pl-lg-4">
-                            <h3 class="editContent" style="outline: none; cursor: inherit;">
-                                <?php echo $viewproduct['name'];?></h3>
-                            <h5 class="editContent">Terminator: Dark Fate</h5>
+                             <h5 class="editContent"><?php echo $viewproduct['name'];?></h5>
+                            <br>
                             <ul>
                                 <li style="list-style: none"><span><b>Год:</b> 2019</span></li>
                                 <li style="list-style: none"><span><b>Страна:</b> США, Китай</span>
@@ -295,11 +296,6 @@
 
                         <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
                             О фильме Терминатор: Темные судьбы</h3>
-                        <p>
-                            <img src="/template/images/about.jpg" class="img-fluid" alt="">
-                            <img src="/template/images/admin.jpg" class="img-fluid" alt="">
-                            <img src="/template/images/d1.jpg" class="img-fluid" alt="">
-                        </p>
                         <p class="editContent" style="outline: none; cursor: inherit;">Сара Коннор
                             превратилась в настоящую охотницу
                             за терминаторами и теперь занимается уничтожением роботов-убийц из
@@ -309,23 +305,6 @@
                             Дани Рамос, от выживания которой также зависит судьба человечества.
                             Вместе с ней в бой вступает и загадочная Грейс, смесь человека и
                             машины.</p>
-                        <p class="mt-3 italic-blue editContent"
-                           style="outline: none; cursor: inherit;">
-                            <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/A36LahZNUiE?controls=0"
-                                    frameborder="0" allow="accelerometer; autoplay;
-                                                                           encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-
-                            </iframe>
-                        </p>
-                        <p class="mt-3 editContent" style="outline: none; cursor: inherit;">
-                            Человечество дорого заплатило за технический прогресс, поставив под
-                            угрозу свое выживание.
-                            Пришло время покончить с войной между машинами и людьми.
-                            Научно-фантастический боевик,
-                            заключительная часть трилогии, перезапускающей франшизу «Терминатора»
-                            Джеймса Кэмерона.
                         </p>
                     </div>
                     <hr>
@@ -352,19 +331,19 @@
                                 </form>
                             </div>
                             <!--  //contact form grid ends here -->
-                        <?php for($i = 0; $i < count($comments); $i++): ?>
+                        <?php foreach($comments as $comment): ?>
                         <div class="media py-5">
                             <img src="/template/images/profile/<?php echo $image_name ?>" class="mr-3 img-fluid" alt="image"
                                  style="outline: none; cursor: inherit;">
                             <div class="media-body mt-4">
                                 <h5 class="mt-0 editContent"
-                                    style="outline: none; cursor: inherit;"><?php foreach($comments[$i] as $name=>$text) echo $name; ?></h5>
+                                    style="outline: none; cursor: inherit;"><?php echo $comment['name']; ?></h5>
                                 <p class="mt-2 editContent" style="outline: none; cursor: inherit;">
-                                    <?php foreach($comments[$i] as $name=>$text) echo $text; ?>
+                                    <?php echo $comment['comment']; ?>
                                 </p>
                         </div>
                             </div>
-                         <?php endfor;?>
+                         <?php endforeach;?>
 
                     </div>
                 </div>

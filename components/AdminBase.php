@@ -14,7 +14,12 @@ abstract class AdminBase
     public static function checkAdmin()
     {
         // Проверяем авторизирован ли пользователь. Если нет, он будет переадресован
-        $name = $_SESSION['user'];
+        if (isset($_SESSION['user'])) {
+            $name = $_SESSION['user'];
+        }
+        else {
+            header("Location: /login");
+        }
 
         // Получаем информацию о текущем пользователе
         $user = User::getUserData($name);

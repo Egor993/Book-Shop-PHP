@@ -194,5 +194,21 @@ class User {
         $result->bindParam(':image', $image, PDO::PARAM_STR);     
         return $result->execute();
     }
+
+    public static function getUsers() {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT * FROM user');
+        $users = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $users[$i]['id'] = $row['id'];
+            $users[$i]['name'] = $row['name'];
+            $i++;
+        }
+        return $users;
+    }
     
 }

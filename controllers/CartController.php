@@ -10,7 +10,6 @@ class CartController {
 
         $productsInCart = false;
         $totalPrice = 0;
-        $products = [];
 
         // Получим данные из корзины
         $productsInCart = Cart::getProducts();
@@ -38,10 +37,19 @@ class CartController {
         header("Location: $referrer");
 
     }
+    public function actionDecrease($id) {
+        // Добавляем товар в корзину
+        Cart::decreaseProduct($id);
+
+        // Возвращаем пользователя на страницу
+        $referrer = $_SERVER['HTTP_REFERER'];
+        header("Location: $referrer");
+
+    }
 
     public function actionDelete($id) {
     // Удаляем заданный товар из корзины
-    Cart::deleteProduct($id);
+    Cart::deleteProducts($id);
 
     // Возвращаем пользователя в корзину
     header("Location: /cart");

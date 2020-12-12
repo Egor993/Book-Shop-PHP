@@ -7,9 +7,8 @@
         <!---->
         <ol class="breadcrumb editContent">
             <li class="breadcrumb-item">
-                <a href="index.html" class="editContent">Home</a>
+                <a href="/">Главная</a>
             </li>
-            <li class="breadcrumb-item active editContent">Single Page</li>
         </ol>
         <!---->
         <!-- banner -->
@@ -132,16 +131,19 @@
                         <!-- deals -->
                         <div class="deal-leftmk left-side">
                             <h3 class="sear-head editContent">Последние добавленные</h3>
-                            <div class="special-sec1 row mt-3 editContent">
+                            <?php foreach ($lastAdded as $product): ?>
+                            <div class="special-sec1 row mt-3 editContent" >
                                 <div class="img-deals col-md-4">
-                                    <img src="/template/images/s5.jpg" class="img-fluid" alt="">
+                                    <a href="/product/<?php echo $product['id']; ?>">
+                                    <img src="/template/images/<?php echo $product['image'];?>" class="img-fluid" alt="" >
                                 </div>
-                                <div class="img-deal1 col-md-4">
-                                    <h3 class="editContent">Крестный отец</h3>
+                                <div class="img-deal1 col-md-8">
+                                    <h3 class="editContent" ><?php echo $product['name']; ?></h3>
                                     <a href="moviesingle.html" class="editContent" ></a>
                                 </div>
-
+                                </a>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                         <!-- //deals -->
 

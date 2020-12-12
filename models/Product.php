@@ -358,39 +358,92 @@ class Product
         return $result->execute();
     }
 
-    public static function addComment($id, $comment) {
+    public static function addComment($book_id, $name, $comment) {
         // Соединение с БД
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'INSERT INTO comments (book_id, comment) VALUES (:book_id, :comment)' ;
-
-        $comment = json_encode($comment, JSON_UNESCAPED_UNICODE);
+        $sql = 'INSERT INTO comments (book_id, name, comment) VALUES (:book_id, :name, :comment)' ;
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
-        $result->bindParam(':book_id', $id, PDO::PARAM_INT);
+        $result->bindParam(':book_id', $book_id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_INT);
         $result->bindParam(':comment', $comment, PDO::PARAM_STR);
 
         return $result->execute();
     }
 
-    public static function viewCommentsByID($id) {
+    public static function viewCommentsByBook_id($id) {
         // Соединение с БД
         $db = Db::getConnection();
 
         // Получение и возврат результатов
-        $result = $db->query('SELECT comment FROM comments WHERE book_id = '.$id);
+        $result = $db->query('SELECT name, comment FROM comments WHERE book_id = '.$id);
         $comments = array();
         $i = 0;
         while ($row = $result->fetch()) {
-            $comments[$i] = $row['comment'];
+            $comments[$i]['name'] = $row['name'];
+            $comments[$i]['comment'] = $row['comment'];
             $i++;
         }
         return $comments;
     }
+
+    public static function viewComments() {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT * FROM comments');
+        $comments = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $comments[$i]['id'] = $row['id'];
+            $comments[$i]['book_id'] = $row['book_id'];
+            $comments[$i]['name'] = $row['name'];
+            $comments[$i]['comment'] = $row['comment'];
+            $i++;
+        }
+        return $comments;
+    }
+
+    public static function deleteCommentById($id) {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'DELETE FROM comments WHERE id = :id';
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        // foreach($ids as $id) {
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+        // }
+        return true;
+    }
+
+
+    public static function getLastAdded() {
+
+        $db = Db::getConnection();
+        $productsList = array();
+
+        $result = $db->query('SELECT id, name, image FROM product '
+                . 'ORDER BY id DESC '                
+                . 'LIMIT ' . 3); // 
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['image'] = $row['image'];
+            $i++;
+        }
+
+        return $productsList;
+    }
+
 }
-
-
-
     

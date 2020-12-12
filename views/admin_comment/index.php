@@ -5,7 +5,7 @@
     <!-- Content -->
     <div id="content" class="flex">
         
-        <h1>Выберите заказы для изменения</h1>
+        <h1>Выберите комментарии для изменения</h1>
     
     <div class="module" id="changelist">
       
@@ -61,15 +61,14 @@
 </tr>
 </thead>
 <tbody>
-
-<?php foreach ($ordersList as $order): ?>
+ <?php foreach($comments as $comment): ?>
 	<tr class="row1">
     <td class="action-checkbox">
-    	<input type="checkbox" name="_selected_action[]" value="<?php echo $order['id'];?>" class="action-select">
+    	<input type="checkbox" name="_selected_action[]" value="<?php echo $comment['id'];?>" class="action-select">
     </td>
     	<th class="field-__str__">
-     		 <a href="/admin/orders/view/<?php echo $order['id'];?>">
-     		 	 Пользователь <?php echo  $order['user_name']; ?> сделал заказ <?php echo 'ID '.$order['id'];?> (<?php echo $order['date'];?>)
+     		 <a href="#">
+     		 	 ID <?php echo $comment['id'];?> Пользователь <?php echo $comment['name']?> отсавил комментарий: "<?php echo $comment['comment']?>" к книге "<?php echo Product::getProductById($comment['book_id'])['name'];?>"
      		 </a>
  		</th>
 	</tr>

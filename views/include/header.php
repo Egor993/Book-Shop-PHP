@@ -25,7 +25,7 @@
                     <!-- nav -->
                     <nav class="py-4">
                         <div id="logo">
-                            <h1> <a href="index.html" class="editContent" style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(255, 255, 255); font-size: 40px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Source Sans Pro&quot;, sans-serif;">Book Shop</a></h1>
+                            <h1> <a href="/" class="editContent">Book Shop</a></h1>
                         </div>
 
                         <label for="drop" class="toggle">Menu</label>
@@ -59,4 +59,6 @@
             <!--// banner-inner -->
             <!-- /header -->
 
-</div>
+        </div>
+    </div>
+</body>

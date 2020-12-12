@@ -27,7 +27,24 @@
                  
             </tr>
                 
-            <tr class="model-book">
+        
+            <tr class="model-reviews">
+            
+                <th scope="row"><a href="/admin/comments">Комментарии</a></th>
+            
+
+            
+                <td><a href="#" class="addlink"></a></td>
+            
+
+            
+                
+                <td><a href="/admin/comments" class="changelink">Изменить</a></td>
+                
+            
+            </tr>
+            
+                <tr class="model-book">
             
                 <th scope="row"><a href="/admin/products">Товары</a></th>
             
@@ -43,45 +60,21 @@
             
             </tr>
         
-            <tr class="model-reviews">
-            
-                <th scope="row"><a href="/admin/main/reviews/">Отзывы</a></th>
-            
-
-            
-                <td><a href="/admin/main/reviews/add/" class="addlink">Добавить</a></td>
-            
-
-            
-                
-                <td><a href="/admin/main/reviews/" class="changelink">Изменить</a></td>
-                
-            
-            </tr>
-        
         </table>
         </div>
     
         <div class="app-auth module">
         <table>
         <caption>
-            <a href="/admin/auth/" class="section" title="Модели в приложении Пользователи и группы">Пользователи</a>
+            <a href="#" class="section" title="Модели в приложении Пользователи и группы">Пользователи</a>
         </caption>
         
             <tr class="model-user">
             
-                <th scope="row"><a href="/admin/auth/user/">Пользователи</a></th>
-            
-
-            
-                <td><a href="/admin/auth/user/add/" class="addlink">Добавить</a></td>
-            
-
-            
+                <th scope="row"><a href="/admin/users">Пользователи</a></th> 
                 
-                <td><a href="/admin/auth/user/" class="changelink">Изменить</a></td>
+                <td><a href="/admin/users" class="changelink">Изменить</a></td>
                 
-            
             </tr>
         
         </table>

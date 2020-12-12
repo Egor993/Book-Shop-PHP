@@ -8,16 +8,17 @@ return array(
     'admin/products/update/([0-9]+)' => 'adminProduct/update/$1',
     'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1',
     'admin/products' => 'adminProduct/index',
+    
+    'admin/comments' => 'adminComment/index',
 
-	'admin/add' => 'admin/add',
+	'admin/users/view/([a-z]+)' => 'adminUser/view/$1',
+    'admin/users' => 'adminUser/index',
+    
+
+	// 'admin/add' => 'admin/add',
 	'admin' => 'admin/index',
 
-    // 'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
-    // 'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
-    // 
 	'product/([0-9]+)' => 'product/view/$1',
-
-	// 'filter\?genre\=([^\s]+)' => 'site/index',
 
 	'page-([0-9]+)' => 'site/index/$1',
 
@@ -27,6 +28,8 @@ return array(
 	'profile/edit' => 'profile/edit',
 	'profile' => 'profile/index',
 
+	'cart/add/([0-9]+)' => 'cart/add/$1',
+	'cart/decrease/([0-9]+)' => 'cart/decrease/$1',
 	'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1',
 	'cart/delete/([0-9]+)' => 'cart/delete/$1',
 	'cart/clear' => 'cart/clear',

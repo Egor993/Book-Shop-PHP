@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 09 2020 г., 17:16
+-- Время создания: Дек 12 2020 г., 19:56
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- База данных: `phpshop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `book_id` int(11) DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`id`, `book_id`, `name`, `comment`) VALUES
+(9, 64, 'egor8765', 'test'),
+(10, 64, 'egor8765', 'ЕЩе 1'),
+(11, 65, 'egor8765', 'Teest'),
+(12, 65, 'egor8765', 'Teest'),
+(13, 66, 'egor8765', 'Teest');
 
 -- --------------------------------------------------------
 
@@ -67,18 +91,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `image`, `price`, `author`, `description`, `genre`, `rating_amount`, `rating_count`) VALUES
-(49, 'Крестный отец', 'krestn.jpg', 778, 'Марио Пьюзо', 'TestTest', 'Драма', 0, 0),
-(50, 'Я был секретарем сталина', 'stal.jpg', 567, 'Борис Бажанов', 'Test', 'Биография', 34, 7),
-(51, 'Крестный отец', 'LwHHtCzbXClGaB00qRvudQ.jpeg', 55, '44556', 'Крестный отец', 'Драма', 0, 0),
-(52, 'Крестный отец', 'F6Mh7o1Xnc69pNM9i4GzUob0zzf.jpeg', 666, '555', '555555', 'Драма', 0, 0),
-(53, 'Крестный отец', '157476717350hax.jpg', 6556560, '343434', '3433', 'Драма', 0, 0),
-(54, 'Крестный отец', 'Bl-iHASDuDU.jpg', 655665, '6565', '6565', 'Драма', 0, 0),
-(55, 'Крестный отец', 'krasnaya_panda_panda_pushistyj_lezhat_104027_1280x1024.jpg', 67676, '6767', '576766', 'Драма', 0, 0),
-(56, 'Крестный отец', 'listening-red-panda-ray-shiu.jpg', 65665, '7878', '78787', 'Драма', 0, 0),
-(57, 'Крестный отец', 'panda_ulybka_belyy_chrnyy_minimalizm_74449_1920x1080.jpg', 6565, '7676', '76776', 'Драма', 0, 0),
-(58, 'Крестный отец', 'animal-art-art-red-panda-Alyssa-Zarate-5251965.jpeg', 555, '5454', '4545', 'Драма', 0, 0),
-(59, 'Наполеон', 'film.png', 55, 'Тест', 'Тест', 'Биография', 0, 0),
-(60, 'Докинз', 'qUfyvwEZyk8.jpg', 55, 'Тест', 'Тест', 'Биография', 0, 0);
+(63, 'Крестный отец', 'krestn.jpg', 767, 'Тест', 'Крестный отец', 'Биография', 0, 0),
+(64, 'Я был секретарем сталина', 'stal.jpg', 444, 'Тест', 'Тест', 'Биография', 4, 1),
+(65, 'Тест244', '0a7c5a2f7afdfbab0ada434ee276ee7a.jpeg', 545, 'Тест244', 'Тест244', 'Биография', 0, 0),
+(66, 'Крестный отец', '157476717350hax.jpg', 565, 'William S. Vincent', 'Тест', 'Биография', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -102,13 +118,7 @@ CREATE TABLE `product_order` (
 --
 
 INSERT INTO `product_order` (`id`, `user_name`, `user_phone`, `user_comment`, `user_id`, `date`, `products`, `status`) VALUES
-(45, 'fsdfsd', '1', '123123123', 4, '2015-05-14 12:54:45', '{\"1\":1,\"2\":1,\"3\":2}', 3),
-(46, 'САША1', 'g3424242342', '', 4, '2015-05-18 18:34:42', '{\"44\":3,\"43\":3}', 1),
-(52, 'egor8765', '79204516092', '1', 6, '2020-12-06 19:55:10', '{\"37\":3,\"36\":3}', 1),
-(53, 'egor8765', '79204516092', '3', 6, '2020-12-06 20:23:10', '{\"40\":2,\"37\":1,\"36\":1,\"35\":1,\"44\":2,\"45\":2}', 1),
-(54, 'egor8765', '79204516092', '555', 6, '2020-12-07 17:03:33', '{\"44\":2,\"45\":1,\"37\":8}', 1),
-(55, 'egor8765', '79204516092', 'teeest', 6, '2020-12-07 21:50:00', '{\"1\":4}', 1),
-(56, 'egor8765', '79204516092', 'Еще один', 6, '2020-12-07 22:09:01', '{\"50\":2,\"49\":2}', 1);
+(65, 'egor8765', '79204516092', 'teeest', 9, '2020-12-12 14:20:37', '{\"63\":5}', 1);
 
 -- --------------------------------------------------------
 
@@ -121,23 +131,28 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(12) NOT NULL
+  `role` varchar(12) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
-(3, 'Александр', 'alex@mail.com', '111111', ''),
-(4, 'Виктор Зинченко', 'zinchenko.us@gmail.com', '222222', ''),
-(5, 'Сергей', 'serg@mail.com', '111111', ''),
-(6, 'egor8765', 'egor8765@mail.ru', '123456', 'admin'),
-(7, 'feda993', 'feda9938765@yandex.ru', '1234567', 'user');
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `image`) VALUES
+(8, 'egor8765', 'egor8765@mail.ru', '123456', 'admin', 'Bl-iHASDuDU.jpg'),
+(9, 'feda993', 'feda9938765@yandex.ru', '1234567', 'admin', 'listening-red-panda-ray-shiu.jpg'),
+(10, 'Егор', 'check@mail.ru', 'проверка', 'admin', 'LwHHtCzbXClGaB00qRvudQ.jpeg');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `genres`
@@ -168,6 +183,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT для таблицы `genres`
 --
 ALTER TABLE `genres`
@@ -177,19 +198,19 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT для таблицы `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
