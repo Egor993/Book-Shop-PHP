@@ -37,6 +37,11 @@
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p><input type="file" name="image"/></p>
+                            <?php if (isset($img_error)): ?>
+                                <ul class="alert alert-danger">
+                                    <li><?php echo $img_error;?></li>
+                                </ul>
+                            <?php endif;?>
                             <button type="sumbit" class="btn btn-success btn-block follow" autofocus>Обновить фотографию</button>
                         </div>
                     </div>

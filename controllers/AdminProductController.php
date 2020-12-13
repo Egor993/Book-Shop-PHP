@@ -14,6 +14,7 @@ class AdminProductController extends AdminBase
 	{
 		// Проверка доступа
 		self::checkAdmin();
+		// Удаление выбранных элементов
 		if (isset($_POST['action'])){
 			foreach($_POST['_selected_action'] as $id){
 				Product::deleteProductById($id);
@@ -49,11 +50,6 @@ class AdminProductController extends AdminBase
 			// Флаг ошибок в форме
 			$errors = false;
 
-			// При необходимости можно валидировать значения нужным образом
-			// if (!isset($options['name']) || empty($options['name'])) {
-			//     $errors[] = 'Заполните поля';
-			// }
-
 			if ($errors == false) {
 				// Если ошибок нет
 				// Добавляем новый товар
@@ -73,7 +69,6 @@ class AdminProductController extends AdminBase
 			}
 		}
 
-		// Подключаем вид
 		require_once(ROOT . '/views/admin_product/create.php');
 		return true;
 	}
@@ -126,7 +121,6 @@ class AdminProductController extends AdminBase
 			header("Location: /admin/products");
 		}
 
-		// Подключаем вид
 		require_once(ROOT . '/views/admin_product/update.php');
 		return true;
 	}

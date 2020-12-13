@@ -1,5 +1,5 @@
 <?php
-return array(
+return [
 	
 	'admin/orders/view/([0-9]+)' => 'adminOrder/view/$1',
 	'admin/orders' => 'adminOrder/index',
@@ -14,8 +14,6 @@ return array(
 	'admin/users/view/([a-z]+)' => 'adminUser/view/$1',
     'admin/users' => 'adminUser/index',
     
-
-	// 'admin/add' => 'admin/add',
 	'admin' => 'admin/index',
 
 	'product/([0-9]+)' => 'product/view/$1',
@@ -39,8 +37,5 @@ return array(
 
 	'exit' => 'user/exit', 
 	'' => 'site/index', 
-
 	
-
-
-	);
+	];

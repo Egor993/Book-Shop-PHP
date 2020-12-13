@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 12 2020 г., 19:56
+-- Время создания: Дек 13 2020 г., 18:49
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -31,19 +31,19 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `book_id` int(11) DEFAULT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `comment` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `comments`
 --
 
-INSERT INTO `comments` (`id`, `book_id`, `name`, `comment`) VALUES
-(9, 64, 'egor8765', 'test'),
-(10, 64, 'egor8765', 'ЕЩе 1'),
-(11, 65, 'egor8765', 'Teest'),
-(12, 65, 'egor8765', 'Teest'),
-(13, 66, 'egor8765', 'Teest');
+INSERT INTO `comments` (`id`, `book_id`, `name`, `comment`, `image`) VALUES
+(43, 63, 'test123', 'Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка', 'unnamed.jpg'),
+(44, 64, 'test123', 'Проверка', 'Bl-iHASDuDU.jpg'),
+(45, 64, 'test123', 'Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Пппп', 'Bl-iHASDuDU.jpg'),
+(46, 64, 'test123', 'Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Пппп Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка Проверка  Проверка  Проверка Проверка Проверка1', 'Bl-iHASDuDU.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,10 +91,16 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `image`, `price`, `author`, `description`, `genre`, `rating_amount`, `rating_count`) VALUES
-(63, 'Крестный отец', 'krestn.jpg', 767, 'Тест', 'Крестный отец', 'Биография', 0, 0),
+(63, 'Крестный отец', 'krestn.jpg', 767, 'Тест', 'Крестный отец', 'Драма', 6.5, 2),
 (64, 'Я был секретарем сталина', 'stal.jpg', 444, 'Тест', 'Тест', 'Биография', 4, 1),
-(65, 'Тест244', '0a7c5a2f7afdfbab0ada434ee276ee7a.jpeg', 545, 'Тест244', 'Тест244', 'Биография', 0, 0),
-(66, 'Крестный отец', '157476717350hax.jpg', 565, 'William S. Vincent', 'Тест', 'Биография', 0, 0);
+(65, 'Тест244', '0a7c5a2f7afdfbab0ada434ee276ee7a.jpeg', 545, 'Тест244', 'Тест244', 'Биография', 8, 2),
+(66, 'Крестный отец', '157476717350hax.jpg', 565, 'William S. Vincent', 'Тест', 'Биография', 8, 2),
+(67, 'Крестный отец', '9975982_p1070347.jpg', 565, 'William S. Vincent', 'Тест', 'Биография', 0, 0),
+(68, 'Крестный отец', 'krasnaya_panda_panda_pushistyj_lezhat_104027_1280x1024.jpg', 4655, 'Тест', 'Тест', 'Биография', 0, 0),
+(69, 'Наполеон', 'film.png', 343, 'Тест', 'Тест', 'Биография', 0, 0),
+(70, 'Белый кит', 'listening-red-panda-ray-shiu.jpg', 545, 'Тест', 'Тест', 'Биография', 0, 0),
+(71, 'Война и мир', 'Screenshot_2018-01-02-23-08-03.png', 23, 'Тест', 'Тест', 'Биография', 0, 0),
+(72, 'Волкодав', 'panda_ulybka_belyy_chrnyy_minimalizm_74449_1920x1080.jpg', 344, 'Тест', 'Тест', 'Биография', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -140,9 +146,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `image`) VALUES
-(8, 'egor8765', 'egor8765@mail.ru', '123456', 'admin', 'Bl-iHASDuDU.jpg'),
-(9, 'feda993', 'feda9938765@yandex.ru', '1234567', 'admin', 'listening-red-panda-ray-shiu.jpg'),
-(10, 'Егор', 'check@mail.ru', 'проверка', 'admin', 'LwHHtCzbXClGaB00qRvudQ.jpeg');
+(11, 'egor8765', 'egor8765@mail.ru', '123456', 'admin', 'unnamed1.jpg'),
+(14, 'test123', 'egor8765@mail.ru4', '123456d', 'admin', 'Bl-iHASDuDU.jpg'),
+(15, 'feda993', 'feda9938765@yandex.ru', '123456', 'admin', 'unnamed.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -186,7 +192,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT для таблицы `genres`
@@ -198,7 +204,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT для таблицы `product_order`
@@ -210,7 +216,7 @@ ALTER TABLE `product_order`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

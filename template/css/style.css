@@ -1224,9 +1224,9 @@ ul.w3layouts-icons li a {
 
 .media img {
     border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -o-border-radius: 50%;
-    -ms-border-radius: 50%;
+    -webkit-border-radius: 10%;
+    width: 120px;
+    height: 100px;
 }
 
 /* //copyright */

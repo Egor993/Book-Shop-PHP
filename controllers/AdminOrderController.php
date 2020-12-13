@@ -4,18 +4,16 @@
  * Контроллер AdminOrderController
  * Управление заказами в админпанели
  */
-class AdminOrderController extends AdminBase
-{
+class AdminOrderController extends AdminBase {
 
     /**
      * Action для страницы "Управление заказами"
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         // Проверка доступа
         self::checkAdmin();
 
-        // Получаем список заказов
+        // Удаление выбранных элементов
         if (isset($_POST['_selected_action'])) {
             foreach($_POST['_selected_action'] as $id){
                 Order::deleteOrderById($id);
@@ -31,8 +29,7 @@ class AdminOrderController extends AdminBase
     /**
      * Action для страницы "Редактирование заказа"
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         // Проверка доступа
         self::checkAdmin();
 
@@ -64,8 +61,7 @@ class AdminOrderController extends AdminBase
     /**
      * Action для страницы "Просмотр заказа"
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         // Проверка доступа
         self::checkAdmin();
 
@@ -89,8 +85,7 @@ class AdminOrderController extends AdminBase
     /**
      * Action для страницы "Удалить заказ"
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         // Проверка доступа
         self::checkAdmin();
 

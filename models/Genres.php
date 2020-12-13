@@ -3,15 +3,9 @@
 class Genres
 {
 
-    /**
-     * Returns an array of categories
-     */
-    public static function getGenresList()
-    {
+    public static function getGenresList() {
 
         $db = Db::getConnection();
-
-        $categoryList = array();
 
         $result = $db->query('SELECT id, name FROM genres '
                 . 'ORDER BY sort_order ASC');

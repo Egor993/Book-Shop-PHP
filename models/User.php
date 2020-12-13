@@ -9,7 +9,7 @@ class User {
         $sql = 'INSERT INTO user (name, email, password, role, image) '
                 . 'VALUES (:name, :email, :password, :role, :image)';
         
-        $image = 'unnamed.jpg';
+        $image = 'unnamed.jpg'; // Изображение по умолчанию
         $role = 'admin';
         $result = $db->prepare($sql);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
@@ -76,15 +76,6 @@ class User {
         return $result->execute();
     }
 
-    // public static function checkLogged() {
-    //     // Если сессия есть, вернем идентификатор пользователя
-    //     if (isset($_SESSION['user'])) {
-    //         return $_SESSION['user'];
-    //     }
-
-    //     header("Location: /login");
-    // }
-
     public static function auth($name)
     {
         $_SESSION['user'] = $name;
@@ -109,10 +100,6 @@ class User {
         return false;
     }
 
-    /**
-     * Проверяет является ли пользователь гостем
-     * @return boolean <p>Результат выполнения метода</p>
-     */
     public static function isGuest()
     {
         if (isset($_SESSION['user'])) {
@@ -121,9 +108,6 @@ class User {
         return true;
     }
     
-    /**
-     * Проверяет имя: не меньше, чем 2 символа
-     */
     public static function checkName($name) {
         if (strlen($name) >= 2) {
             return true;
@@ -131,19 +115,13 @@ class User {
         return false;
     }
     
-    /**
-     * Проверяет имя: не меньше, чем 6 символов
-     */
     public static function checkPassword($password) {
         if (strlen($password) >= 6) {
             return true;
         }
         return false;
     }
-    
-    /**
-     * Проверяет email
-     */
+
     public static function checkEmail($email) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
@@ -196,10 +174,9 @@ class User {
     }
 
     public static function getUsers() {
-        // Соединение с БД
+
         $db = Db::getConnection();
 
-        // Получение и возврат результатов
         $result = $db->query('SELECT * FROM user');
         $users = array();
         $i = 0;
@@ -209,6 +186,18 @@ class User {
             $i++;
         }
         return $users;
+    }
+
+    public static function deleteUserById($id) {
+
+        $db = Db::getConnection();
+        echo $id;
+
+        $sql = 'DELETE FROM user WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
     }
     
 }

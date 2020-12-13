@@ -11,10 +11,7 @@ class Cart
     {
         $id = intval($id);
 
-        // Пустой массив для товаров в корзине
-        $productsInCart = array();
-
-        // Если в корзине уже есть товары (они хранятся в сессии)
+        // Если в корзине уже есть товары
         if (isset($_SESSION['products'])) {
             // То заполним наш массив товарами
             $productsInCart = $_SESSION['products'];
@@ -36,10 +33,9 @@ class Cart
     public static function decreaseProduct($id)
     {
         $id = intval($id);
-
-        // Пустой массив для товаров в корзине
-        $productsInCart = $_SESSION['products'];
-
+        // Получаем список товаров
+        $productsInCart = self::getProducts();
+        // Уменьшаем нужный товар на 1
         $productsInCart[$id]--;
         if ($productsInCart[$id] == 0) {
             unset($productsInCart[$id]);
@@ -50,10 +46,6 @@ class Cart
         return self::countItems();
     }
 
-    /**
-     * Подсчет количество товаров в корзине (в сессии)
-     * @return int 
-     */
     public static function countItems() {
         if (isset($_SESSION['products'])) {
             $count = 0;

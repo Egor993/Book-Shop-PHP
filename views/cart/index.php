@@ -3,7 +3,7 @@
 		<div class="col-lg-12">
 			<div class="box-element">
 
-				<a  class="btn btn-outline-dark" href="/">&#x2190;Продолжить покупки</a>
+				<a  class="btn btn-outline-dark" href="/">&#x2190; Продолжить покупки</a>
 
 				<br>
 				<br>

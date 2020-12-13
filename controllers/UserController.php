@@ -10,14 +10,15 @@ class UserController {
         $result = false;
 
         if (isset($_POST['submit'])) {
-            $name = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password1'];
-            $password2 = $_POST['password2'];
-            $role = 'user';
+            $name = strip_tags($_POST['username']);
+            $email = strip_tags($_POST['email']);
+            $password = strip_tags($_POST['password1']);
+            $password2 = strip_tags($_POST['password2']);
+            $role = 'admin';
 
             $errors = false;
             
+            // Валидация полей  
             if (!User::checkName($name)) {
                 $errors[] = 'Имя не должно быть короче 2-х символов';
             }
@@ -58,9 +59,10 @@ class UserController {
     {
         $name = '';
         $password = '';
+
         if (isset($_POST['submit'])) {
-            $name = $_POST['username'];
-            $password = $_POST['password'];
+            $name = strip_tags($_POST['username']);
+            $password = strip_tags($_POST['password']);
             
             $errors = false;
                         

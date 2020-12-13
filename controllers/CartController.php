@@ -1,17 +1,14 @@
 <?php
 
-// include_once ROOT . '/models/Genres.php';
-// include_once ROOT . '/models/Product.php';
-// include_once ROOT . '/components/Pagination.php';
-
 class CartController {
 
 	public function actionIndex() {
 
         $productsInCart = false;
         $totalPrice = 0;
+        $products = [];
 
-        // Получим данные из корзины
+        // Получаемм данные из корзины
         $productsInCart = Cart::getProducts();
 
         if ($productsInCart) {
@@ -56,7 +53,7 @@ class CartController {
 	}
 
 	public function actionClear() {
-    // Удаляем заданный товар из корзины
+    // Удаляем все товары из корзины
     Cart::clear();
 
     // Возвращаем пользователя в корзину
@@ -99,13 +96,8 @@ class CartController {
 
         // Проверяем является ли пользователь гостем
         if (!User::isGuest()) {
-            // Если пользователь не гость
-            // Получаем информацию о пользователе из БД
-            $userName = $_SESSION['user'];
+            // Получаем информацию о пользователе
             $user = User::getUserData($userName);
-        } else {
-            // Если гость, поля формы останутся пустыми
-            $userId = false;
         }
 
         // Обработка формы
@@ -114,9 +106,9 @@ class CartController {
             // Получаем данные из формы
             $data = User::getUserData($userName);
             $userId = $data['id'];
-            $userName = $_POST['userName'];
-            $userPhone = $_POST['userPhone'];
-            $userComment = $_POST['userComment'];
+            $userName = strip_tags($_POST['userName']);
+            $userPhone = strip_tags($_POST['userPhone']);
+            $userComment = htmlspecialchars($_POST['userComment']);
 
             // Флаг ошибок
             $errors = false;
@@ -133,26 +125,16 @@ class CartController {
                 // Если ошибок нет
                 // Сохраняем заказ в базе данных
                 $result = Order::save($userName, $userPhone, $userComment, $userId, $productsInCart);
-
+                // Очищаем корзину
                 if ($result) {
-                    // Если заказ успешно сохранен
-                    // Оповещаем администратора о новом заказе по почте                
-                    // $adminEmail = 'php.start@mail.ru';
-                    // $message = '<a href="http://digital-mafia.net/admin/orders">Список заказов</a>';
-                    // $subject = 'Новый заказ!';
-                    // mail($adminEmail, $subject, $message);
-
-                    // Очищаем корзину
                     Cart::clear();
                 }
             }
         }
 
-
 		require_once(ROOT . '/views/cart/payment.php');
 
 		return true;
 	}
-
 }
 

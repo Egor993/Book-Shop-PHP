@@ -318,12 +318,16 @@
                                 <form action="#" method="post" class="mt-4">
                                     <div class="form-group editContent"
                                          style="outline: none; cursor: inherit;">
-                                        <label for="contactcomment" class="editContent"
-                                               style="outline: none; cursor: inherit;">Ваш комментарий
-                                            *</label>
+                                        <label for="contactcomment" class="editContent">Ваш комментарий</label>
                                         <textarea class="form-control border" rows="10" cols="90" 
                                                   id="contactcomment" required="" name='comment'></textarea>
                                     </div>
+                                     <label for="contactcomment" class="editContent">Максимальная длина 500 символов *</label>
+	                                <?php if (isset($error)): ?>
+	                                <ul class="alert alert-danger">
+	                                    <li><?php echo $error; ?></li>
+	                                </ul>
+	                            	<?php endif;?>
                                     <button type="submit" name="submit"
                                             class="mt-3 btn btn-success btn-block py-3"
                                             style="outline: none; cursor: inherit;">Отправить
@@ -333,12 +337,11 @@
                             <!--  //contact form grid ends here -->
                         <?php foreach($comments as $comment): ?>
                         <div class="media py-5">
-                            <img src="/template/images/profile/<?php echo $image_name ?>" class="mr-3 img-fluid" alt="image"
-                                 style="outline: none; cursor: inherit;">
-                            <div class="media-body mt-4">
+                            <img src="/template/images/profile/<?php echo $comment['image'] ?>" class="mr-3 img-fluid" alt="image" >
+                            <div class="media-body mt-6">
                                 <h5 class="mt-0 editContent"
                                     style="outline: none; cursor: inherit;"><?php echo $comment['name']; ?></h5>
-                                <p class="mt-2 editContent" style="outline: none; cursor: inherit;">
+                                <p class="mt-2 editContent">
                                     <?php echo $comment['comment']; ?>
                                 </p>
                         </div>

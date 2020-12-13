@@ -28,7 +28,7 @@
     <label>Действие: <select name="action" required>
   <option value="" selected>---------</option>
 
-  <option value="delete_selected">Удалить выбранные заказы</option>
+  <option value="delete_selected">Удалить выбранных пользователей</option>
 
 </select></label><input type="hidden" name="select_across" value="0" class="select-across">
     
@@ -65,7 +65,7 @@
 <?php foreach ($users as $user): ?>
 	<tr class="row1">
     <td class="action-checkbox">
-    	<input type="checkbox" name="_selected_action[]" value="<?php echo $$user['id']['id'];?>" class="action-select">
+    	<input type="checkbox" name="_selected_action[]" value="<?php echo $user['id'];?>" class="action-select">
     </td>
     	<th class="field-__str__">
      		 <a href="/admin/users/view/<?php echo $user['name'];?>">

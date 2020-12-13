@@ -1,21 +1,16 @@
 <?php
 
-class Product
-{
+class Product {
 
-    const SHOW_BY_DEFAULT = 8;
+    const SHOW_BY_DEFAULT = 8; // Сколько товаров показывать на странице
 
-    /**
-     * Returns an array of products
-     */
-    public static function getLatestProducts($page)
-    {
+    public static function getLatestProducts($page) {
+
         $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
-
+        // Соединение с БД
         $db = Db::getConnection();
-        $productsList = array();
-
+        // Получение и возврат результатов
         $result = $db->query('SELECT id, name, price, image, rating_amount, rating_count FROM product '
                 . 'ORDER BY id ASC '                
                 . 'LIMIT ' . self::SHOW_BY_DEFAULT
@@ -35,14 +30,12 @@ class Product
         return $productsList;
     }
 
-    public static function getProductsByWord($page, $word)
-    {
+    public static function getProductsByWord($page, $word) {
+
         $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
         $db = Db::getConnection();
-
-        // echo $word;
 
         $productsList = array();
 
@@ -65,8 +58,8 @@ class Product
         return $productsList;
     }
 
-    public static function getProductsByGenre($page, $genre)
-    {
+    public static function getProductsByGenre($page, $genre) {
+
         $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
@@ -207,12 +200,10 @@ class Product
         return $products;
     }
 
-    public static function getProductsList()
-    {
-        // Соединение с БД
+    public static function getProductsList() {
+
         $db = Db::getConnection();
 
-        // Получение и возврат результатов
         $result = $db->query('SELECT id, name, price, image, author FROM product ORDER BY id ASC');
         $productsList = array();
         $i = 0;
@@ -227,12 +218,10 @@ class Product
         return $productsList;
     }
 
-        public static function updateProductById($id, $options)
-    {
-        // Соединение с БД
+        public static function updateProductById($id, $options) {
+        
         $db = Db::getConnection();
 
-        // Текст запроса к БД
         $sql = "UPDATE product
             SET 
                 name = :name,
@@ -259,10 +248,9 @@ class Product
     {
 
         $options['genre'] = 'Биография'; // УДАЛИТЬ
-        // Соединение с БД
+
         $db = Db::getConnection();
 
-        // Текст запроса к БД
         $sql = 'INSERT INTO product '
                 . '(name, price, author,'
                 . 'description, image, genre, rating_amount, rating_count)'
@@ -291,18 +279,13 @@ class Product
     }
 
         public static function deleteProductById($id) {
-        // Соединение с БД
         $db = Db::getConnection();
 
-        // Текст запроса к БД
         $sql = 'DELETE FROM product WHERE id = :id';
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-        // foreach($ids as $id) {
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-        // }
         return true;
     }
 
@@ -334,22 +317,20 @@ class Product
 
 
     public static function setRating($id, $val, $amount, $count) {
-        // Соединение с БД
-        $db = Db::getConnection();
 
+        $db = Db::getConnection();
+        //Добавляет новое значение к сумме балов
         $count += 1;
         $sum = ($val + $amount)/$count;
         $sum = ceil($sum/0.5)*0.5; // Округление до 0.5
         $sum += $amount;
 
-        // Текст запроса к БД
         $sql = "UPDATE product
             SET 
                 rating_amount = :rating_amount,
                 rating_count = :rating_count
             WHERE id = :id";
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':rating_amount', $sum, PDO::PARAM_STR);
@@ -358,43 +339,42 @@ class Product
         return $result->execute();
     }
 
-    public static function addComment($book_id, $name, $comment) {
-        // Соединение с БД
+    public static function addComment($book_id, $name, $comment, $image) {
+
         $db = Db::getConnection();
 
-        // Текст запроса к БД
-        $sql = 'INSERT INTO comments (book_id, name, comment) VALUES (:book_id, :name, :comment)' ;
+        $sql = 'INSERT INTO comments (book_id, name, comment, image) VALUES (:book_id, :name, :comment, :image)' ;
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':book_id', $book_id, PDO::PARAM_INT);
         $result->bindParam(':name', $name, PDO::PARAM_INT);
         $result->bindParam(':comment', $comment, PDO::PARAM_STR);
+        $result->bindParam(':image', $image, PDO::PARAM_STR);
 
         return $result->execute();
     }
 
     public static function viewCommentsByBook_id($id) {
-        // Соединение с БД
+
         $db = Db::getConnection();
 
-        // Получение и возврат результатов
-        $result = $db->query('SELECT name, comment FROM comments WHERE book_id = '.$id);
+
+        $result = $db->query('SELECT name, comment, image FROM comments WHERE book_id = '.$id);
         $comments = array();
         $i = 0;
         while ($row = $result->fetch()) {
             $comments[$i]['name'] = $row['name'];
             $comments[$i]['comment'] = $row['comment'];
+            $comments[$i]['image'] = $row['image'];
             $i++;
         }
         return $comments;
     }
 
     public static function viewComments() {
-        // Соединение с БД
+
         $db = Db::getConnection();
 
-        // Получение и возврат результатов
         $result = $db->query('SELECT * FROM comments');
         $comments = array();
         $i = 0;
@@ -409,30 +389,25 @@ class Product
     }
 
     public static function deleteCommentById($id) {
-        // Соединение с БД
+
         $db = Db::getConnection();
 
-        // Текст запроса к БД
         $sql = 'DELETE FROM comments WHERE id = :id';
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-        // foreach($ids as $id) {
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-        // }
+
         return true;
     }
-
 
     public static function getLastAdded() {
 
         $db = Db::getConnection();
-        $productsList = array();
 
         $result = $db->query('SELECT id, name, image FROM product '
                 . 'ORDER BY id DESC '                
-                . 'LIMIT ' . 3); // 
+                . 'LIMIT ' . 3);
 
         $i = 0;
         while ($row = $result->fetch()) {

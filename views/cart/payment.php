@@ -8,7 +8,7 @@
 			<form id="form">
 				<div id="user-info">
 					<div class="form-field">
-						<input required class="form-control" type="text" name="userName" placeholder="Name..">
+						<input required class="form-control" type="text" name="userEmail" placeholder="Имя..">
 					</div>
 				</div>
 				
@@ -17,10 +17,10 @@
 					<p>Shipping Information:</p>
 					<hr>
 					<div class="form-field">
-						<input class="form-control" type="text" name="userPhone" placeholder="Phone..">
+						<input class="form-control" type="text" name="userPhone" placeholder="Телефон..">
 					</div>
 					<div class="form-field">
-						<input class="form-control" type="text" name="userComment" placeholder="Comment..">
+						<input class="form-control" type="text" name="userComment" placeholder="Комментарий..">
 					</div>
 
 				</div>
@@ -29,16 +29,9 @@
 				<button type="submit", name="submit", class ="btn btn-success btn-block", value='Send' autofocus>Отправить</button>
 			</form>
 		</div>
-</form>
-
-		<br>
-		<div class="box-element hidden" id="payment-info">
-			<small>Paypal Options</small>
-			<!--<button id="make-payment">Make payment</button>-->
-			<div id="paypal-button-container"></div>
-		</div>
-		
 	</div>
+</form>		
+	
 
 	<div class="col-lg-6">
 		<div class="box-element">
