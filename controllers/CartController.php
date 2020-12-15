@@ -83,6 +83,7 @@ class CartController {
         $productsIds = array_keys($productsInCart);
         $products = Product::getProdustsByIds($productsIds);
         $totalPrice = Cart::getTotalPrice($products);
+
         // Количество товаров
         $totalQuantity = Cart::countItems();
 
@@ -99,7 +100,6 @@ class CartController {
             // Получаем информацию о пользователе
             $user = User::getUserData($userName);
         }
-
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
@@ -120,6 +120,9 @@ class CartController {
             if (!User::checkPhone($userPhone)) {
                 $errors[] = 'Неправильный телефон';
             }
+            if ($_SESSION['captcha'] != htmlspecialchars($_POST['code'])){
+                $errors[] = 'Вы не прошли капчу';
+            }
 
             if ($errors == false) {
                 // Если ошибок нет
@@ -132,7 +135,17 @@ class CartController {
             }
         }
 
+        // Подключение капчи и ее настройка
+        $phraseBuilder = new \Gregwar\Captcha\PhraseBuilder(5, '0123456789');
+        $captcha = new Gregwar\Captcha\CaptchaBuilder(null, $phraseBuilder);
+        $captcha->setBackgroundColor(255, 255, 255);
+        $captcha->setIgnoreAllEffects(true);
+        $captcha->build(150, 40);
+        $image = $captcha->inline();
+        $_SESSION['captcha'] = $captcha->getPhrase();
+
 		require_once(ROOT . '/views/cart/payment.php');
+
 
 		return true;
 	}

@@ -1,6 +1,5 @@
 <?php include ROOT.'/views/include/header.php'; ?>
 
-
 <form action="#" method="post">
  <div class="row">
 	<div class="col-lg-6">
@@ -8,13 +7,14 @@
 			<form id="form">
 				<div id="user-info">
 					<div class="form-field">
-						<input required class="form-control" type="text" name="userEmail" placeholder="Имя..">
+						<p>Данные заказчика:</p>
+						<input required class="form-control" type="text" name="userName" placeholder="Имя..">
 					</div>
 				</div>
 				
 				<div id="shipping-info">
 					<hr>
-					<p>Shipping Information:</p>
+					
 					<hr>
 					<div class="form-field">
 						<input class="form-control" type="text" name="userPhone" placeholder="Телефон..">
@@ -26,6 +26,20 @@
 				</div>
 
 				<hr>
+				<div class="form-field">
+                   <img src="<?php echo $image; ?>" height="50">
+                </div>
+                    <div class="form-field">
+                        <input name="code" type="text" class="form-control" id="code" placeholder="Капча...">
+                    </div>
+				<br><br>
+				<?php if (isset($errors) and is_array($errors)): ?>
+            	<ul class="alert alert-danger">
+	                <?php foreach ($errors as $error): ?>
+	                    <li><?php echo $error;?></li>
+	                <?php endforeach;?>
+           		</ul>
+            	<?php endif;?>
 				<button type="submit", name="submit", class ="btn btn-success btn-block", value='Send' autofocus>Отправить</button>
 			</form>
 		</div>

@@ -191,8 +191,7 @@ class User {
     public static function deleteUserById($id) {
 
         $db = Db::getConnection();
-        echo $id;
-
+        
         $sql = 'DELETE FROM user WHERE id = :id';
 
         $result = $db->prepare($sql);
