@@ -36,10 +36,6 @@
                     </tr>
                 <?php endif; ?>
                 <tr>
-                    <td><h3><b>Статус заказа</b></td>
-                    <td><h3><?php echo Order::getStatusText($order['status']); ?></td>
-                </tr>
-                <tr>
                     <td><h3><b>Дата заказа</b></td>
                     <td><h3><?php echo $order['date']; ?></td>
                 </tr>
@@ -60,7 +56,7 @@
                     <tr>
                         <td><h3><?php echo $product['id']; ?></td>
                         <td><h3><?php echo $product['name']; ?></td>
-                        <td><h3><?php echo $product['price']; ?></td>
+                        <td><h3><?php echo $product['price']; ?> руб</td>
                         <td><h3><?php echo $productsQuantity[$product['id']]; ?></td>
                     </tr>
                 <?php endforeach; ?>

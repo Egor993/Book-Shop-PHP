@@ -92,15 +92,21 @@ class Product {
     {
         $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
-
         $db = Db::getConnection();
 
         $productsList = array();  
+        if ($rating != 0 ){
         $result = $db->query('SELECT id, name, price, image, rating_amount, rating_count FROM product WHERE FLOOR(rating_amount/rating_count) =' . $rating
                  . ' ORDER BY id ASC '                
                  . 'LIMIT ' . self::SHOW_BY_DEFAULT
                 . ' OFFSET ' . $offset); // 
-
+        }
+        else {
+            $result = $db->query('SELECT id, name, price, image, rating_amount, rating_count FROM product WHERE rating_amount =' . $rating
+                 . ' ORDER BY id ASC '                
+                 . 'LIMIT ' . self::SHOW_BY_DEFAULT
+                . ' OFFSET ' . $offset); // 
+        }
             $i = 0;
             while ($row = $result->fetch()) {
                 $productsList[$i]['id'] = $row['id'];
