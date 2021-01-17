@@ -116,26 +116,11 @@
                         <a href="https://djangochannel.com">BookShop.</a>
                     </p>
                     <!-- move top icon -->
-                    <a href="#home" class="move-top text-right col-md-2"><span class="fa fa-long-arrow-up" aria-hidden="true" ></span></a>
+                    <a href="#" class="move-top text-right col-md-2"><span class="fa fa-long-arrow-up" aria-hidden="true" ></span></a>
                     <!-- //move top icon -->
                 </div>
             </div>
         </div></div>
 
-<script src="/template/js/jquery.js"></script>
-<script src="/template/js/bootstrap.min.js"></script>
-<script src="/template/js/jquery.scrollUp.min.js"></script>
-<script src="/template/js/price-range.js"></script>
-<script src="/template/js/jquery.prettyPhoto.js"></script>
 <script src="/template/js/main.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".add-to-cart").click(function () {
-            var id = $(this).attr("data-id");
-            $.post("/cart/addAjax/"+id, {}, function (data) {
-                $("#cart-count").html(data);
-            });
-            return false;
-        });
-    });
-</script>
+</html>

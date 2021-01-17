@@ -37,7 +37,7 @@
 
             <button type="submit", name="submit", class ="btn btn-primary btn-block", value='Registration'>Отправить</button>
         </form>
-<div/>
+</div>
 
 
 </body>

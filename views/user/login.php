@@ -29,7 +29,7 @@
           
             <button type="submit", name="submit", class ="btn btn-primary btn-block", value='Enter'>Отправить</button>
         </form>
-<div/>
+</div>
 
 
 </body>
