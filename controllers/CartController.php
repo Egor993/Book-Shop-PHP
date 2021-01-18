@@ -28,44 +28,22 @@ class CartController {
 	public function actionAdd($id) {
         // Добавляем товар в корзину
         Cart::addProduct($id);
-
-        // Возвращаем пользователя на страницу
-        $referrer = $_SERVER['HTTP_REFERER'];
-        header("Location: $referrer");
-
     }
+    
     public function actionDecrease($id) {
         // Добавляем товар в корзину
         Cart::decreaseProduct($id);
-
-        // Возвращаем пользователя на страницу
-        $referrer = $_SERVER['HTTP_REFERER'];
-        header("Location: $referrer");
-
     }
 
     public function actionDelete($id) {
     // Удаляем заданный товар из корзины
-    Cart::deleteProducts($id);
-
-    // Возвращаем пользователя в корзину
-    header("Location: /cart");
-	}
-
+        Cart::deleteProducts($id);
+    }
+    
 	public function actionClear() {
     // Удаляем все товары из корзины
-    Cart::clear();
-
-    // Возвращаем пользователя в корзину
-    header("Location: /cart");
+        Cart::clear();
 	}
-
-    public function actionAddAjax($id)
-    {
-        // Добавляем товар в корзину
-        echo Cart::addProduct($id);
-        return true;
-    }
 
 	public function actionPayment() {
 

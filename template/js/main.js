@@ -5,7 +5,7 @@ addToCart.forEach((item) => {
 	item.addEventListener('click', (e) => {
 		e.preventDefault();
 		let id = (item.getAttribute('data-id'));
-		fetch('/cart/addAjax/'+id, {
+		fetch('/cart/add/'+id, {
 			method: 'POST'
 		})
 		  .then(response => {

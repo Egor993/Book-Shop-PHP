@@ -28,7 +28,6 @@ return [
 
 	'cart/add/([0-9]+)' => 'cart/add/$1',
 	'cart/decrease/([0-9]+)' => 'cart/decrease/$1',
-	'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1',
 	'cart/delete/([0-9]+)' => 'cart/delete/$1',
 	'cart/clear' => 'cart/clear',
 	'cart' => 'cart/index',
