@@ -5,10 +5,10 @@ include_once ROOT. '/models/Product.php';
 class ProductController {
 
 	public function actionView($id) {
-
 		// Получаем данные рейтинга
 		$amount = Product::getRatingAmountById($id); // Общая сумма баллов
 		$count = Product::getCountRatingById($id); // Кол-во проголосовавших
+
 		// Если сумма баллов != 0, то вычисляем рейтинг и округялем
 		if ($amount != 0) {
 			$rating = ceil(($amount/$count)/0.5)*0.5;

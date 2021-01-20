@@ -163,7 +163,17 @@
                                         <h4>
                                             <?php echo $product['name'];?></a>
                                         </h4>
-                                        <a class='add-to-cart'href="#" data-id='<?php echo $product['id']; ?>'>В корзину</a>
+                                        <h6>
+                                            <?php echo $product['price'];?> руб
+                                        </h6>            
+                                            <a href="#" class="buybtn" data-id='<?php echo $product['id']; ?>'>
+                                                <span class="buybtn-text">
+                                                    Купить
+                                                </span>
+                                                <span class="buybtn-image">
+                                                    <span></span>
+                                                </span>
+                                            </a>
                                         <div class="product_price">
                                             <div class="grid-price">
                                                 <span class="money editContent" >«Слогана нет»</span>

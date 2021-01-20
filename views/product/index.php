@@ -210,8 +210,23 @@
                             <img src="/template/images/<?php echo $viewproduct['image'];?>" class="img-fluid" alt="">
                         </div>
                         <div class="desc1-right col-md-6 pl-lg-4">
-                             <h5 class="editContent"><?php echo $viewproduct['name'];?></h5>
-                            <br>
+                             <div class="item-info-product">
+                                <h4>
+                                    <?php echo $viewproduct['name'];?></a>
+                                </h4>
+                                <h6>
+                                    <?php echo $viewproduct['price'];?> руб
+                                </h6>            
+                                <a href="#" class="buybtn" data-id='<?php echo $viewproduct['id']; ?>'>
+                                    <span class="buybtn-text">
+                                        Купить
+                                    </span>
+                                    <span class="buybtn-image">
+                                        <span></span>
+                                    </span>
+                                </a>
+                                </div>
+                                <br>
                             <ul>
                                 <li style="list-style: none"><span><b>Год:</b> 2019</span></li>
                                 <li style="list-style: none"><span><b>Страна:</b> США, Китай</span>
@@ -232,20 +247,19 @@
                                     <?php if(!(isset($_SESSION[$id.'i']))): ?>
                                         <form method="post">
         									<div class="rating-area">
-        										<input type="radio" id="star-5" name="rating" value="5">
+        										<input type="radio" id="star-5" name="rating" value="5" onclick="form.submit();">
         										<label for="star-5" title="Оценка «5»"></label>	
-        										<input type="radio" id="star-4" name="rating" value="4">
+        										<input type="radio" id="star-4" name="rating" value="4" onclick="form.submit();">
         										<label for="star-4" title="Оценка «4»"></label>    
-        										<input type="radio" id="star-3" name="rating" value="3">
+        										<input type="radio" id="star-3" name="rating" value="3" onclick="form.submit();">
         										<label for="star-3" title="Оценка «3»"></label>  
-        										<input type="radio" id="star-2" name="rating" value="2">
+        										<input type="radio" id="star-2" name="rating" value="2" onclick="form.submit();">
         										<label for="star-2" title="Оценка «2»"></label>    
-        										<input type="radio" id="star-1" name="rating" value="1">
+        										<input type="radio" id="star-1" name="rating" value="1" onclick="form.submit();">
         										<label for="star-1" title="Оценка «1»"></label>
                                                 
                                                 <h4><?php echo $rating ?></h4>
         									</div>
-                                            <button type="sumbit" onclick="">Оценить</button>
                                         </form>
                                     <?php else:?>
                                     <h4><?php echo $rating ?></h4>
@@ -258,12 +272,12 @@
                                         </div>
                                     <?php endif; ?>
                                 </li>
-                                <br> <br />
+
                                 <div class="share-desc">
                                     <div class="share">
                                         <h4 class="editContent"
                                             style="outline: none; cursor: inherit;">
-                                            Share:</h4>
+                                            Поделиться:</h4>
                                         <ul class="w3layouts_social_list list-unstyled">
                                             <li>
                                                 <a href="#" class="w3pvt_facebook editContent"
@@ -287,11 +301,10 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div class="clearfix"></div>
+                                    </div> 
                                 </div>
+                            </div>
                         </div>
-                    </div>
                     <div class="row sub-para-w3layouts mt-5">
 
                         <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
@@ -309,12 +322,15 @@
                     </div>
                     <hr>
                     <div class="row">
+                        
                         <div class="single-form-left">
                             <!-- contact form grid -->
                             <div class="contact-single">
+                            <?php if(!(User::isGuest())): ?>
                                 <h3 class="editContent" style="outline: none; cursor: inherit;">
                                     <span class="sub-tittle editContent"
                                           style="outline: none; cursor: inherit;"></span>Оставить отзыв</h3>
+                            
                                 <form action="#" method="post" class="mt-4">
                                     <div class="form-group editContent"
                                          style="outline: none; cursor: inherit;">
@@ -333,7 +349,15 @@
                                             style="outline: none; cursor: inherit;">Отправить
                                     </button>
                                 </form>
+                                <?php else: ?>
+                                    <div class="berrors">
+                                        <b>Информация</b><br>
+                                        Посетители, находящиеся в группе <b>Гости</b>, не могут оставлять комментарии 
+                                        к данной публикации.
+					                </div>
+                                <?php endif;?>
                             </div>
+                            
                             <!--  //contact form grid ends here -->
                         <?php foreach($comments as $comment): ?>
                         <div class="media py-5">
@@ -356,4 +380,5 @@
     <!-- //contact -->
     <!-- footer -->
    <?php include ROOT.'/views/include/footer.php'; ?>
+
 </body>

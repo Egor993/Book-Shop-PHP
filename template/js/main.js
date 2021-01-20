@@ -1,4 +1,6 @@
-const addToCart = document.querySelectorAll('.add-to-cart');
+"use strict";
+
+const addToCart = document.querySelectorAll('.buybtn');
 const cartCount = document.querySelector('#cart-count');
 
 addToCart.forEach((item) => {

@@ -626,8 +626,8 @@ span.money {
 }
 
 .product_price {
-    margin: 1em 0 0 0;
-    padding: 1em 0 0 0;
+    margin: 0.5em 0 0 0;
+    padding: 0.5em 0 0 0;
     border-top: 1px solid #ddd;
 }
 
@@ -1662,6 +1662,8 @@ a.move-top span {
 
 .rating-area {
     overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
     width: 265px;
     margin: 0 auto;
 }
@@ -1705,6 +1707,9 @@ a.move-top span {
 .rating-result {
     width: 265px;
     margin: 0 auto;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 .rating-result span {
     padding: 0;
@@ -1773,6 +1778,75 @@ button.genre:active {
   transform: translateY(4px);
 }
 
-/*li {
-    list-style-type: none; /* Убираем маркеры */
-}*/
+
+
+.buybtn {
+    -moz-transition: all 0.3s linear 0s;
+    background: -moz-linear-gradient(center top , #FF8400 0%, #FF6600 100%) repeat scroll 0 0 transparent;
+    border: 1px solid #FF5A00;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
+    clear: both;
+    display: inline-block;
+
+    font-family: Arial,sans-serif;
+    height: 40px;
+    margin: 5px 0px 0px 0px;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 65px;
+    position: relative;
+
+
+}
+.buybtn-text {
+    -moz-transition: all 0.2s linear 0s;
+    color: #6E1D08;
+    display: block;
+    font-size: 18px;
+    padding-top: 7px;
+    text-shadow: 0 10px 10px rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+}
+
+.buybtn-image {
+    border-left: 1px solid #FF5A00;
+    box-shadow: 1px 0 1px rgba(255, 255, 255, 0.4) inset;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 52px;
+}
+.buybtn-image span {
+    background: url("../images/cart.png") no-repeat scroll 75% 55% transparent;
+    height: 38px;
+    left: 50%;
+    margin: -20px 0 0 -20px;
+    opacity: 0.7;
+    position: absolute;
+    top: 50%;
+    width: 38px;
+}
+.buybtn:hover .buybtn-text {
+    color: #b60606;
+    text-shadow: 0 1px 1px #5D81AB;
+
+}
+.buybtn:hover .buybtn-hidden-text {
+    width: 100px;
+}
+.buybtn:hover .buybtn-image span {
+    opacity: 1;
+}
+.buybtn:active {
+    background: none repeat scroll 0 0 #FF5A00;
+}
+
+.item-info-product h6 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+

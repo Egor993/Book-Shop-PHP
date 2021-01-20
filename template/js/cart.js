@@ -1,3 +1,5 @@
+"use strict";
+
 const add = document.querySelectorAll('[data-add]'),
 	decrease = document.querySelectorAll('[data-decrease]'),
 	deleteItem = document.querySelectorAll('[data-delete]'),
