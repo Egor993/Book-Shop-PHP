@@ -109,6 +109,7 @@ class CartController {
                 // Очищаем корзину
                 if ($result) {
                     Cart::clear();
+                    header("Location: /");
                 }
             }
         }

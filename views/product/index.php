@@ -81,18 +81,32 @@
                             <form action="/" method="post">
                             <div class="left-side my-4">
                                 <h3 class="sear-head editContent">Жанры</h3>
-                                <ul class="w3layouts-box-list">
-                                    
-                                        <li class="editContent">
-                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Биография'">Биография</button>
-                                            </button>
-                                        </li>
-                                    
-                                        <li class="editContent">
-                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Драма'">Драма</button>
-                                            </button>
-                                        </li>
-                                    
+                                <ul class="w3layouts-box-list">       
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Биография'">Биография</button>
+                                        </button>
+                                    </li>
+                                
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Драма'">Драма</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Роман'">Роман</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Руководство'">Руководство</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Фэнтези'">Фэнтези</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Фантастика'">Фантастика</button>
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             
@@ -228,19 +242,8 @@
                                 </div>
                                 <br>
                             <ul>
-                                <li style="list-style: none"><span><b>Год:</b> 2019</span></li>
-                                <li style="list-style: none"><span><b>Страна:</b> США, Китай</span>
-                                </li>
-                                <li style="list-style: none"><span><b>Слоган:</b> «Welcome to the Day after Judgment Day»</span>
-                                </li>
-                                <li style="list-style: none">
-                                    <span><b>Режиссер:</b> Тим Миллер</span></li>
-                                <li style="list-style: none"><span><b>Актеры:</b> Арнольд Шварценеггер, Маккензи Дэвис,
-                                    Эдвард Ферлонг, Линда Хэмилтон, Том Хоппер, Кассандра Старр, Гэбриел Луна,
-                                    Наталия Рейес, Стивен Кри, Диего Бонета</span></li>
-                                <li style="list-style: none"><span><b>Жанр:</b> фантастика, боевик, приключения</span>
-                                </li>
-                                <li style="list-style: none"><span><b>Премьера в мире:</b> 23 октября 2019</span>
+                            <li style="list-style: none"><span><b>Автор:</b> <?php echo $viewproduct['author'];?></span>
+                                <li style="list-style: none"><span><b>Жанр:</b> <?php echo $viewproduct['genre'];?></span>
                                 </li>
                                 <li style="list-style: none">
                                     <b>Рейтинг:</b>
@@ -308,16 +311,10 @@
                     <div class="row sub-para-w3layouts mt-5">
 
                         <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
-                            О фильме Терминатор: Темные судьбы</h3>
-                        <p class="editContent" style="outline: none; cursor: inherit;">Сара Коннор
-                            превратилась в настоящую охотницу
-                            за терминаторами и теперь занимается уничтожением роботов-убийц из
-                            будущего.
-                            Она считала, что главное — это не дать им добраться до Джона, но теперь
-                            появилась
-                            Дани Рамос, от выживания которой также зависит судьба человечества.
-                            Вместе с ней в бой вступает и загадочная Грейс, смесь человека и
-                            машины.</p>
+                            О книге <?php echo $viewproduct['name'];?></h3>
+                        <p class="editContent" style="outline: none; cursor: inherit;">
+                        <?php echo $viewproduct['description'];?>
+                        </p>
                         </p>
                     </div>
                     <hr>

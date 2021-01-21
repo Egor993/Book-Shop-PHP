@@ -767,6 +767,7 @@ ul.list-unstyled.w3layouts-icons.clients li span:hover {
 /*-- //testimonials --*/
 .men-thumb-item {
     position: relative;
+
 }
 
 .item-info-product h4 {
@@ -1849,4 +1850,7 @@ button.genre:active {
     line-height: 40px;
 }
 
-
+.img-fluid-main{
+    width: 250px;
+    height: 397px;
+}

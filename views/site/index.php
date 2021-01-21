@@ -28,18 +28,32 @@
                             <form action="#" method="post">
                             <div class="left-side my-4">
                                 <h3 class="sear-head editContent">Жанры</h3>
-                                <ul class="w3layouts-box-list">
-                                    
-                                        <li class="editContent">
-                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Биография'">Биография</button>
-                                            </button>
-                                        </li>
-                                    
-                                        <li class="editContent">
-                                             <button type="sumbit" class="btn genre" name="genre[]" value="'Драма'">Драма</button>
-                                            </button>
-                                        </li>
-                                    
+                                <ul class="w3layouts-box-list">       
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Биография'">Биография</button>
+                                        </button>
+                                    </li>
+                                
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Драма'">Драма</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Роман'">Роман</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Руководство'">Руководство</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Фэнтези'">Фэнтези</button>
+                                        </button>
+                                    </li>
+                                    <li class="editContent">
+                                            <button type="sumbit" class="btn genre" name="genre[]" value="'Фантастика'">Фантастика</button>
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             
@@ -157,7 +171,7 @@
                                 <div class="product-shoe-info editContent text-center mt-lg-4" >
                                     <div class="men-thumb-item">
                                         <a href="product/<?php echo $product['id'];?>" class="editContent" >
-                                        <img src="/template/images/<?php echo $product['image'];?>"  class="img-fluid">
+                                        <img src="/template/images/<?php echo $product['image'];?>"  class="img-fluid-main">
                                     </div>
                                     <div class="item-info-product">
                                         <h4>
