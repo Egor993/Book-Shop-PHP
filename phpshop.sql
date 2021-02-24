@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 21 2021 г., 23:02
+-- Время создания: Фев 24 2021 г., 16:09
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -40,35 +40,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `book_id`, `name`, `comment`, `image`) VALUES
-(58, 63, 'egor8765', 'Отличная книга!', 'animal-art-art-red-panda-Alyssa-Zarate-5251965.jpeg'),
-(59, 76, 'a9938765', '123', 'unnamed.jpg'),
-(60, 76, 'Jane030482', 'Теест', 'unnamed.jpg'),
-(61, 76, 'Jane030482', 'псотиь', 'unnamed.jpg'),
-(62, 76, 'Jane030482', 'псотиь', 'unnamed.jpg'),
-(63, 76, 'Jane030482', 'псотиь', 'unnamed.jpg');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `genres`
---
-
-CREATE TABLE `genres` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `sort_order` int(11) NOT NULL DEFAULT 0,
-  `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `genres`
---
-
-INSERT INTO `genres` (`id`, `name`, `sort_order`, `status`) VALUES
-(13, 'Ноутбуки', 1, 1),
-(14, 'Планшеты', 2, 1),
-(15, 'Мониторы', 3, 1),
-(16, 'Игровые компьютеры', 4, 1);
+(58, 63, 'egor8765', 'Отличная книга!', 'Bl-iHASDuDU.jpg');
 
 -- --------------------------------------------------------
 
@@ -152,7 +124,11 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `image`) VALUES
 (11, 'egor8765', 'egor8765@mail.ru', '123456', 'admin', 'Bl-iHASDuDU.jpg'),
 (15, 'feda993', 'feda9938765@yandex.ru', '123456', 'admin', '9975982_p1070347.jpg'),
 (16, 'a9938765', 'egor81765@mail.ru', '123456', 'admin', 'unnamed.jpg'),
-(17, 'Jane030482', 'alex@mail.com', '123456', 'admin', 'unnamed.jpg');
+(17, 'Jane030482', 'alex@mail.com', '123456', 'admin', 'unnamed.jpg'),
+(18, 'a99387654', 'egor87654@mail.ru', '123456', 'admin', 'unnamed.jpg'),
+(19, 'a993876543', 'egor876541@mail.ru', '123456', 'admin', 'unnamed.jpg'),
+(20, 'a9938765433', 'egor8765411@mail.ru', '123456', 'admin', 'unnamed.jpg'),
+(21, 'a99387654333', 'egor87654111@mail.ru', '123456', 'admin', 'unnamed.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -162,12 +138,6 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `image`) VALUES
 -- Индексы таблицы `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `genres`
---
-ALTER TABLE `genres`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -196,13 +166,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
-
---
--- AUTO_INCREMENT для таблицы `genres`
---
-ALTER TABLE `genres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
@@ -220,7 +184,7 @@ ALTER TABLE `product_order`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -46,11 +46,7 @@ class ProductController {
 		}
 		// Получаем все комментарии к данной книге
 		$comments = Product::viewCommentsByBook_id($id);
-		// Проходимся циклом по комментариям и меняем фотографии профилей на актуальные
-		foreach($comments as &$comment){
-			$data = User::getUserData($comment['name']);
-			$comment['image']= $data['image'];
-		}
+
 		// Берет последние 3 добавленные товара
 		$lastAdded = Product::getLastAdded();
 		

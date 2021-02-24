@@ -160,10 +160,23 @@ class User {
     }
 
     public static function setImage($name, $image) {
+        $db = Db::getConnection();
+
+        $sql = "UPDATE user
+            SET image = :image 
+            WHERE name = :name";
+        
+        $result = $db->prepare($sql);   
+        $result->bindParam(':name', $name, PDO::PARAM_STR);                                          
+        $result->bindParam(':image', $image, PDO::PARAM_STR);     
+        return $result->execute();
+    }
+
+    public static function setImageComment($name, $image) {
         
         $db = Db::getConnection();
 
-        $sql = "UPDATE user 
+        $sql = "UPDATE comments 
             SET image = :image 
             WHERE name = :name";
         

@@ -30,6 +30,7 @@ class ProfileController {
 				$image_name = Image::resize($_FILES['image']);
 				// Добавляем название файла фото в БД
 				User::setImage($name, $image_name);
+				User::setImageComment($name, $image_name);
 				// Копируем файл фото из временной папки и удаляем его оттуда
 				copy('template/images/tmp/' . $image_name, 'template/images/profile/' . $image_name);
 				unlink('template/images/tmp/' . $image_name);
@@ -68,6 +69,7 @@ class ProfileController {
 				$image_name = Image::resize($_FILES['image']);
 				// Добавляем название файла фото в БД
 				User::setImage($name, $image_name);
+				User::setImageComment($name, $image_name);
 				// Копируем файл фото из временной папки и удаляем его оттуда
 				copy('template/images/tmp/' . $image_name, 'template/images/profile/' . $image_name);
 				unlink('template/images/tmp/' . $image_name);
